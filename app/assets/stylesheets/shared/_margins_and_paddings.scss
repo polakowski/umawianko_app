@@ -1,0 +1,61 @@
+@mixin padding-container($size) {
+  &--a { padding: $size; }
+  &--t { padding-top: $size; }
+  &--b { padding-bottom: $size; }
+  &--r { padding-right: $size; }
+  &--l { padding-left: $size; }
+  &--v {
+    padding-top: $size;
+    padding-bottom: $size;
+  }
+  &--h {
+    padding-left: $size;
+    padding-right: $size;
+  }
+}
+
+@mixin margin-container($size) {
+  &--a { margin: $size; }
+  &--t { margin-top: $size; }
+  &--b { margin-bottom: $size; }
+  &--r { margin-right: $size; }
+  &--l { margin-left: $size; }
+  &--v {
+    margin-top: $size;
+    margin-bottom: $size;
+  }
+  &--h {
+    margin-left: $size;
+    margin-right: $size;
+  }
+}
+
+// PADDINGS
+.p-m {
+  @include padding-container($size-m);
+}
+
+.p-s {
+  @include padding-container($size-s);
+}
+
+// MARGINS
+.m-l {
+  @include margin-container($size-l);
+}
+
+.m-m {
+  @include margin-container($size-m);
+}
+
+.m-s {
+  @include margin-container($size-s);
+}
+
+.m-xs {
+  @include margin-container($size-xs);
+}
+
+.m-xxs {
+  @include margin-container($size-xxs);
+}
