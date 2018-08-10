@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: $font-family-base;
+  font-weight: $font-weight-regular;
+  -webkit-font-smoothing: antialiased;
+}
+
+a, a:active, a:focus, a:hover, a:visited {
+  text-decoration: none;
+  outline: none;
+}
