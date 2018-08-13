@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'um-icons';
+  src: asset-url('um-icons.eot');
+  src: asset-url('um-icons.eot') format('embedded-opentype'),
+    asset-url('um-icons.ttf') format('truetype'),
+    asset-url('um-icons.woff') format('woff');
+}
+
+.umi {
+  font-family: 'um-icons';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &--place:before {
+    content: "\e900";
+  }
+}

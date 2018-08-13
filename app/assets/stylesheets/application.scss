@@ -16,8 +16,12 @@
 @import 'variables';
 @import 'reset';
 
+@import 'shared/deco-header';
+@import 'shared/layout';
+@import 'shared/link';
 @import 'shared/margins_and_paddings';
 @import 'shared/utils';
-@import 'shared/layout';
+@import 'shared/icons';
 
+@import 'components/event-card';
 @import 'components/global-header';

@@ -1,0 +1,15 @@
+@mixin link-main($color) {
+  color: $color;
+  &:hover { color: $color-ddd-gray; }
+
+  &.inverted {
+    color: $color-ddd-gray;
+    &:hover { color: $color; }
+  }
+}
+
+.link {
+  &--primary {
+    @include link-main($color-primary);
+  }
+}

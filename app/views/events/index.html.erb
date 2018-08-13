@@ -1,0 +1,12 @@
+<div class='fluid-content-wrapper p-m--t'>
+  <h1 class='m-m--b deco-header'><span>Upcoming Events</span></h1>
+  <% if @events.any? %>
+    <ul>
+      <%- @events.map do |event| %>
+        <%= render partial: 'event/card', locals: { event: event } %>
+      <% end %>
+    </ul>
+  <% else %>
+    <div>No events</div>
+  <% end %>
+</div>

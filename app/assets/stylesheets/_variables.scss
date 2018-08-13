@@ -12,7 +12,9 @@ $color-gamma: #181818;
 $color-gamma-op: #dbe39a;
 
 $color-page-bg: #f4f7f6;
-$color-page-bg-tint: #f4f7f6;
+$color-page-bg-tint: #e6e6e6;
+
+$color-primary: #5ace9e;
 
 // SPACINGS
 $size-xxxxs: 4px;
@@ -35,9 +37,11 @@ $font-weight-bold: 900;
 $font-size-xs: 12px;
 $font-size-s: 14px;
 $font-size-m: 16px;
-$font-size-l: 20px;
-$font-size-xl: 24px;
-$font-size-xxl: 28px;
+$font-size-l: 18px;
+$font-size-xl: 20px;
+$font-size-xxl: 22px;
+$font-size-xxxl: 24px;
+$font-size-xxxxl: 28px;
 
 // OTHER
 $page-max-width: 820px;
