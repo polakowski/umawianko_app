@@ -1,0 +1,35 @@
+$labels-gutter-width: 10 * $size-m;
+
+.simple_form {
+  .input.string, .input.text {
+    display: flex;
+
+    label {
+      flex: 0 0 $labels-gutter-width;
+      text-align: right;
+      padding-top: $size-s;
+      font-weight: $font-weight-semibold;
+      color: $color-dd-gray;
+      margin-right: $size-m;
+    }
+  }
+
+  input.string, textarea.text {
+    flex-grow: 1;
+    font-size: $font-size-m;
+    font-family: $font-family-base;
+    border-radius: $btn-border-radius;
+    border: 1px solid $color-page-bg-tint;
+    margin-bottom: $size-m;
+    padding: $size-s;
+
+    &:active, &:focus {
+      outline: none;
+      border-color: $color-secondary;
+    }
+  }
+
+  &__actions {
+    margin-left: $labels-gutter-width + $size-m;
+  }
+}

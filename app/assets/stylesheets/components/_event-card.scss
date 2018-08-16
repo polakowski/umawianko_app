@@ -67,12 +67,22 @@ $card-header-height: 40px;
 
   &:last-child &__circle:before {
     content: none;
-  }
+}
 }
 
 .event-card--cta {
   margin-left: 7 * $size-m;
   display: inline-flex;
+
+  .event-card__title {
+    will-change: color;
+    transition: color $link-anim-duration ease;
+  }
+
+  .event-card__circle__inner {
+    will-change: color, border-color;
+    transition: color $link-anim-duration ease, border-color $link-anim-duration ease;
+  }
 
   &:hover {
     .event-card__title {

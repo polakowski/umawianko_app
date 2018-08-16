@@ -13,3 +13,8 @@
     @include link-main($color-primary);
   }
 }
+
+.link--trans {
+  will-change: border, color, background;
+  transition: all $link-anim-duration ease;
+}
