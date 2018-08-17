@@ -6,8 +6,10 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
-  config.wrappers :default, class: :input,
-    hint_class: :field_with_hint, error_class: :field_with_errors do |b|
+  config.wrappers :default,
+    class: 'input',
+    hint_class: 'input--hinted',
+    error_class: 'input--invalid' do |b|
     ## Extensions enabled by default
     # Any of these extensions can be disabled for a
     # given input by passing: `f.input EXTENSION_NAME => false`.
@@ -45,9 +47,13 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     ## Inputs
-    b.use :label_input
-    b.use :hint,  wrap_with: { tag: :span, class: :hint }
-    b.use :error, wrap_with: { tag: :span, class: :error }
+    b.use :label
+
+    b.wrapper tag: :div, class: 'input-content' do |comp|
+      comp.use :input
+      comp.use :hint,  wrap_with: { tag: :span, class: :hint }
+      comp.use :error, wrap_with: { tag: :span, class: :error }
+    end
 
     ## full_messages_for
     # If you want to display the full error message for the attribute, you can
@@ -102,7 +108,7 @@ SimpleForm.setup do |config|
   # config.item_wrapper_class = nil
 
   # How the label text should be generated altogether with the required text.
-  # config.label_text = lambda { |label, required, explicit_label| "#{required} #{label}" }
+  config.label_text = lambda { |label, required, explicit_label| label }
 
   # You can define the class to use on all labels. Default is nil.
   # config.label_class = nil

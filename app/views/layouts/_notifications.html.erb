@@ -1,0 +1,7 @@
+<% if flash.any? %>
+  <div class='fluid-content-wrapper m-m--t'>
+    <% flash.each do |k, v| %>
+      <div class='notification notification--<%= k %>'><%= v %></div>
+    <% end %>
+  </div>
+<% end %>

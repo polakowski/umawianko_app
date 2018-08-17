@@ -8,6 +8,20 @@ class EventsController < AuthenticatedController
   end
 
   def create
-    @event = Event.new
+    @resource = Event.new
+    @event = EventForm::CreateEvent.new(@resource, event_params).as(current_user)
+
+    if @event.save
+      flash[:success] = 'Event created!'
+      redirect_to :events
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def event_params
+    params[:event]
   end
 end

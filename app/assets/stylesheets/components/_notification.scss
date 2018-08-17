@@ -1,0 +1,13 @@
+.notification {
+  border-radius: $btn-border-radius;
+  border: 1px solid $color-page-bg-tint;
+  background: white;
+  padding: $size-s $size-m;
+  font-weight: $font-weight-semibold;
+
+  &--success {
+    border-color: $color-success;
+    color: $color-success;
+    background: $color-success-bg;
+  }
+}

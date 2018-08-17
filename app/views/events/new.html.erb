@@ -1,13 +1,13 @@
 <div class='fluid-content-wrapper p-m--t'>
   <h1 class='m-m--b'>Create new event</h1>
   <%= simple_form_for @event do |f| %>
-    <%= f.input :name, placeholder: 'What?' %>
-    <%= f.input :place, placeholder: 'Where?' %>
-    <%= f.input :datetime, as: 'string', label: 'Event time', placeholder: 'When?',
+    <%= f.input :name %>
+    <%= f.input :place %>
+    <%= f.input :datetime, as: 'string',
       input_html: { id: 'datetimepicker' },
       wrapper_html: { class: 'datetimepicker-wrapper' }
-      %>
-    <%= f.input :description %>
+    %>
+    <%= f.input :description, as: :text %>
     <div class='simple_form__actions'>
       <%= f.submit 'Submit', class: 'btn btn--secondary btn--wide link--trans' %>
     </div>
@@ -18,7 +18,7 @@
   $(function() {
     $('#datetimepicker').datetimepicker({
       sideBySide: true,
-      format: 'D-MM-YYYY hh:mm A'
+      format: 'YYYY-MM-D hh:mm A'
     });
   });
 </script>
