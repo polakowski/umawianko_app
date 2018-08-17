@@ -20,6 +20,7 @@ gem 'simple_form', '~> 3'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'jquery-rails', '~> 4.3.0'
+gem 'rails-patterns', '~> 0'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
