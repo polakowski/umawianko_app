@@ -14,6 +14,7 @@
   border: 1px solid $color-page-bg-tint;
   margin: $size-xxxs 0;
   padding: $size-s;
+  z-index: 100;
 
   *[data-action] {
     cursor: pointer;
@@ -39,6 +40,11 @@
 
   .table-condensed {
     width: 100%;
+
+    thead tr:first-child {
+      height: 2em;
+      vertical-align: top;
+    }
   }
 
   .datepicker-days {
@@ -108,6 +114,26 @@
     display: block;
     width: 100%;
     text-align: center;
+  }
+
+  .glyphicon {
+    @extend .umi;
+
+    &.glyphicon-chevron-up {
+      @extend .umi--chevron-up;
+    }
+
+    &.glyphicon-chevron-down {
+      @extend .umi--chevron-down;
+    }
+
+    &.glyphicon-chevron-right {
+      @extend .umi--chevron-right;
+    }
+
+    &.glyphicon-chevron-left {
+      @extend .umi--chevron-left;
+    }
   }
 }
 

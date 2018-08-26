@@ -17,4 +17,28 @@
   &--place:before {
     content: "\e900";
   }
+
+  &--chevron-right:before {
+    content: "\e901";
+  }
+
+  &--chevron-left:before {
+    content: "\e902";
+  }
+
+  &--chevron-down:before {
+    content: "\e903";
+  }
+
+  &--chevron-up:before {
+    content: "\e904";
+  }
+
+  &--checkmark:before {
+    content: "\e905";
+  }
+
+  &--error-outline:before {
+    content: "\e906";
+  }
 }

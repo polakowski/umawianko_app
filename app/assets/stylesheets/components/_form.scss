@@ -14,6 +14,20 @@ $labels-gutter-width: 10 * $size-m;
     }
   }
 
+  .input.input--invalid {
+    .input-content:after {
+      @extend .umi;
+      content: "\e906";
+      position: absolute;
+      padding: $size-s + 2px;
+      line-height: $font-size-m;
+      font-size: $font-size-xxl;
+      right: 0;
+      top: 0;
+      color: $color-error;
+    }
+  }
+
   input.string, textarea.text {
     font-size: $font-size-m;
     font-family: $font-family-base;
@@ -32,6 +46,7 @@ $labels-gutter-width: 10 * $size-m;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    position: relative;
 
     .error {
       padding: $size-xxxs;
