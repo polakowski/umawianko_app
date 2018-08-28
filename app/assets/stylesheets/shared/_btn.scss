@@ -13,6 +13,9 @@
   font-size: $font-size-m;
   padding: $size-xxs $size-l;
   background: transparent;
+  will-change: border, color, background;
+  transition: all $link-anim-duration ease;
+  display: inline-block;
 
   &:hover {
     cursor: pointer;
@@ -24,6 +27,12 @@
 
   &--wide {
     min-width: 8 * $size-m;
+  }
+
+  &--large {
+    font-size: $font-size-xl;
+    padding-left: 2 * $size-xxxl;
+    padding-right: 2 * $size-xxxl;
   }
 
   &--primary {

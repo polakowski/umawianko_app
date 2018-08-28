@@ -9,12 +9,10 @@
 }
 
 .link {
+  will-change: color;
+  transition: color $link-anim-duration ease;
+
   &--primary {
     @include link-main($color-primary);
   }
-}
-
-.link--trans {
-  will-change: border, color, background;
-  transition: all $link-anim-duration ease;
 }

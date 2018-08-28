@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy', as: :sign_out
   get '/auth/failure' => 'sessions#failure'
 
-  resources :events, only: %i[index new create]
+  resources :events, only: %i[index new create show]
 
   root to: 'home#index'
 end
