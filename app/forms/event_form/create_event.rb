@@ -24,7 +24,7 @@ module EventForm
 
     def auto_assign_creator
       return true unless auto_join
-      Events::JoinEvent.call(resource, form_owner)
+      Events::JoinEvent.call(resource, form_owner).result
     end
 
     def datetime_not_past

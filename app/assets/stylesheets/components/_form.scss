@@ -11,6 +11,11 @@ $labels-gutter-width: 10 * $size-m;
       color: $color-dd-gray;
       margin-right: $size-m;
     }
+
+    .hint {
+      color: $color-l-gray;
+      font-weight: $font-weight-semibold;
+    }
   }
 
   .input.string, .input.text {
@@ -33,7 +38,7 @@ $labels-gutter-width: 10 * $size-m;
     }
   }
 
-  input.string, textarea.text {
+  input.string, textarea.text, input[type='number'] {
     font-size: $font-size-m;
     font-family: $font-family-base;
     border-radius: $btn-border-radius;
@@ -46,6 +51,10 @@ $labels-gutter-width: 10 * $size-m;
     }
   }
 
+  input[type=number]::-webkit-inner-spin-button {
+    font-size: 2em;
+  }
+
   .input-content {
     margin-bottom: $size-m;
     display: flex;
@@ -54,7 +63,7 @@ $labels-gutter-width: 10 * $size-m;
     position: relative;
 
     .error {
-      padding: $size-xxxs;
+      padding: $size-xxxs 0;
       border-radius: 0 0 $btn-border-radius $btn-border-radius;
       color: $color-error;
     }
@@ -78,8 +87,6 @@ $labels-gutter-width: 10 * $size-m;
     .hint {
       line-height: $checkbox-height;
       margin-left: $size-xxs;
-      color: $color-l-gray;
-      font-weight: $font-weight-semibold;
     }
 
     & > label {
@@ -93,6 +100,7 @@ $labels-gutter-width: 10 * $size-m;
       & + label.checkbox {
         @extend .umi;
         padding-top: 0;
+        font-size: $font-size-s;
         align-self: flex-start;
       }
 

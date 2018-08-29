@@ -37,6 +37,8 @@ en:
         datetime: 'Event time'
         description: 'Description'
         auto_join: 'Auto-join'
+      event_user:
+        friends_count: 'No. of friends'
 
     placeholders:
       event:
@@ -47,3 +49,5 @@ en:
     hints:
       event:
         auto_join: 'Check if you want to participate'
+      event_user:
+        friends_count: 'How many friends will you bring?'

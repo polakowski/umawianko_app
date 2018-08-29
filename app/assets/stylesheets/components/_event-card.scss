@@ -27,6 +27,8 @@ $card-header-height: 40px;
     font-size: $font-size-xxl;
     font-weight: $font-weight-semibold;
     line-height: $card-header-height;
+    will-change: color;
+    transition: color $link-anim-duration ease;
   }
 
   &__description {
@@ -42,12 +44,15 @@ $card-header-height: 40px;
     text-align: center;
     color: white;
     font-weight: $font-weight-bold;
-    font-size: $font-size-xxl;
 
     &__inner {
       width: 100%;
       height: 100%;
       border-radius: inherit;
+    }
+
+    .umi {
+      font-size: $font-size-m;
     }
 
     &:before {
@@ -67,7 +72,7 @@ $card-header-height: 40px;
 
   &:last-child &__circle:before {
     content: none;
-}
+  }
 }
 
 .event-card--cta {
@@ -80,6 +85,7 @@ $card-header-height: 40px;
   }
 
   .event-card__circle__inner {
+    font-size: $font-size-xxl;
     will-change: color, border-color;
     transition: color $link-anim-duration ease, border-color $link-anim-duration ease;
   }

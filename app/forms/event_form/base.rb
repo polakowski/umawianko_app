@@ -1,5 +1,5 @@
 module EventForm
-  class Base < BaseForm
+  class Base < ApplicationForm
     attribute :name, String
     attribute :description, String
     attribute :place, String

@@ -42,4 +42,11 @@
   &--secondary {
     @include classic-button($color-secondary);
   }
+
+  &[disabled] {
+    speak: none;
+    color: $color-cancel;
+    border-color: $color-cancel;
+    pointer-events: none;
+  }
 }

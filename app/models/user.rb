@@ -10,4 +10,8 @@ class User < ApplicationRecord
     Users::GoogleOAuthCreateUser.call(user, auth)
     user
   end
+
+  def to_s
+    name.presence || email
+  end
 end

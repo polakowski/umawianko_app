@@ -22,6 +22,7 @@ class EventsController < AuthenticatedController
 
   def show
     @event = Event.find(params[:id])
+    @event_user = @event.event_users.find_by(user: current_user)
   end
 
   private

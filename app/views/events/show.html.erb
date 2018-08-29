@@ -16,6 +16,12 @@
         <%= format_event_time(@event) %>
       </span>
     </div>
+    <div class='event-page__data'>
+      <label>People</label>
+      <span class='event-people'>
+        <%= format_event_people(@event) %>
+      </span>
+    </div>
     <% if @event.description.present? %>
       <div class='event-page__data event-page__data--condensed m-m--t'>
         <label>Details</label>
@@ -23,9 +29,22 @@
       </div>
     <% end %>
 
-    <h1 class='m-m--b m-l--t deco-header'><span>Participants</span></h1>
+    <h2 class='m-m--b m-l--t deco-header header--m'><span>
+      Participants (<%= @event.users_joined.count %> users)
+    </span></h2>
+
+    <%- @event.event_users.includes(:user).map do |event_user| %>
+      <%= render partial: 'events/participant', locals: { event_user: event_user } %>
+    <%- end %>
+
     <div class='event-page__cta-wrapper'>
-      <%= link_to 'Sign me up!', '#', class: 'btn btn--primary btn--large' %>
+      <% if @event_user.nil? %>
+        <%= link_to 'Sign me up!', new_event_event_user_path(@event),
+          class: 'btn btn--primary btn--large' %>
+      <% else %>
+        <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
+          class: 'btn btn--primary btn--large' %>
+      <% end %>
     </div>
   </div>
 </div>

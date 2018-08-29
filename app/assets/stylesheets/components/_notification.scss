@@ -1,3 +1,5 @@
+$notification-icon-size: 28px;
+
 .notification {
   border-radius: $btn-border-radius;
   border: 1px solid $color-page-bg-tint;
@@ -5,9 +7,27 @@
   padding: $size-s $size-m;
   font-weight: $font-weight-semibold;
 
+  &:before {
+    @extend .umi;
+    font-size: $font-size-s;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+    height: $notification-icon-size;
+    width: $notification-icon-size;
+    display: inline-block;
+    line-height: $notification-icon-size;
+    text-align: center;
+    margin-right: $size-l;
+  }
+
   &--success {
     border-color: $color-success;
     color: $color-success;
-    background: $color-success-bg;
+
+    &:before {
+      @extend .umi--checkmark;
+      border-color: $color-success;
+    }
   }
 }

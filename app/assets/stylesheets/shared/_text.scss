@@ -1,5 +1,18 @@
+h1, h2, h3 {
+  color: $color-ddd-gray;
+}
+
 h1 {
+  font-size: $font-size-xxxxl;
+  font-weight: $font-weight-semibold;
+}
+
+h2 {
+  font-size: $font-size-xxxl;
+  font-weight: $font-weight-semibold;
+}
+
+h3 {
   font-size: $font-size-xxl;
   font-weight: $font-weight-semibold;
-  color: $color-ddd-gray;
 }

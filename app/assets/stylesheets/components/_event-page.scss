@@ -29,19 +29,24 @@
     }
 
     .event-name {
-      font-size: $font-size-xxl;
+      font-size: $font-size-xxxl;
       font-weight: $font-weight-semibold;
       line-height: $card-header-height;
     }
 
     .event-place {
-      font-size: $font-size-l;
+      font-size: $font-size-xl;
       font-weight: $font-weight-semibold;
       color: $color-dd-gray;
     }
 
     .event-datetime {
       font-weight: $font-weight-semibold;
+    }
+
+    .event-people {
+      font-weight: $font-weight-semibold;
+      color: $color-dd-gray;
     }
 
     .event-description {
@@ -52,5 +57,41 @@
 
   &__cta-wrapper {
     text-align: center;
+  }
+
+  .event-participant {
+    display: flex;
+    align-items: center;
+    margin-bottom: $size-m;
+
+    &__image-wrapper {
+      border-radius: 50%;
+      width: 58px;
+      height: 58px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__name {
+      align-items: center;
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-between;
+      margin-left: $size-l;
+
+      h3 {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-semibold;
+      }
+
+      .subtext {
+        font-weight: $font-weight-semibold;
+        color: $color-gray;
+      }
+    }
   }
 }
