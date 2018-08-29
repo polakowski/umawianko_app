@@ -1,0 +1,44 @@
+<div class='fluid-content-wrapper p-m--t'>
+  <% if @event.persisted? %>
+    <h1 class='m-m--b'>Update <%= @event.name %></h1>
+  <% else %>
+    <h1 class='m-m--b'>Create new event</h1>
+  <% end %>
+
+
+  <%= simple_form_for @event do |f| %>
+    <%= f.input :name %>
+    <%= f.input :place %>
+
+    <% unless @event.persisted? %>
+      <%= f.input :datetime, as: 'string',
+        input_html: { id: 'datetimepicker' },
+        wrapper_html: { class: 'datetimepicker-wrapper' }
+      %>
+    <% end %>
+
+    <%= f.input :description, as: :text, input_html: { rows: 5 } %>
+
+    <% unless @event.persisted? %>
+      <%= f.input :auto_join, as: :boolean do |checkbox| %>
+        <%= f.check_box :auto_join %>
+        <label for='event_auto_join' class='checkbox'></label>
+      <% end %>
+    <% end %>
+
+    <div class='simple_form__actions'>
+      <%= f.submit 'Submit', class: 'btn btn--secondary btn--wide' %>
+    </div>
+  <% end %>
+</div>
+
+<% unless @event.persisted? %>
+  <script type='text/javascript'>
+    $(function() {
+      $('#datetimepicker').datetimepicker({
+        sideBySide: true,
+        format: 'YYYY-MM-D hh:mm A'
+      });
+    });
+  </script>
+<% end %>
