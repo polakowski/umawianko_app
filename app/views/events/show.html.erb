@@ -1,33 +1,34 @@
 <div class='fluid-content-wrapper p-m--t'>
   <div class='event-page'>
     <h1 class='m-m--b deco-header'><span>Event details</span></h1>
-    <div class='event-page__data'>
-      <label>What?</label>
+    <div class='event-page__data m-xs--b'>
+      <label></label>
       <span class='event-name'><%= @event.name %></span>
     </div>
-    <div class='event-page__data'>
+    <div class='event-page__data m-m--b'>
       <label>Where?</label>
       <span class='event-place'><%= @event.place %></span>
     </div>
-    <div class='event-page__data'>
+    <div class='event-page__data m-m--b'>
       <label>When?</label>
       <span class='event-datetime'>
         <%= format_event_date(@event) %>
         <%= format_event_time(@event) %>
       </span>
     </div>
-    <div class='event-page__data'>
-      <label>People</label>
-      <span class='event-people'>
-        <%= format_event_people(@event) %>
-      </span>
-    </div>
     <% if @event.description.present? %>
-      <div class='event-page__data event-page__data--condensed m-m--t'>
+      <div class='event-page__data event-page__data--condensed m-m--b'>
         <label>Details</label>
         <span class='event-description'><%= @event.description %></span>
       </div>
     <% end %>
+    <div class='event-page__data m-m--b'>
+      <label>People</label>
+      <div class='event-people'>
+        <span class='total'><%= @event.participants_count %></span>
+        <span><%= format_event_people_hint(@event) %></span>
+      </div>
+    </div>
 
     <h2 class='m-m--b m-l--t deco-header header--m'><span>
       Participants (<%= @event.users_joined.count %> users)

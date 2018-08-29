@@ -14,7 +14,7 @@ class EventsController < AuthenticatedController
 
     if @event.save
       flash[:success] = 'Event created!'
-      redirect_to :events
+      redirect_to @event
     else
       render :new
     end

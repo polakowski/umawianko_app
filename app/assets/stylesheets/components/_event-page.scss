@@ -6,8 +6,7 @@
     float: left;
     display: flex;
     width: 100%;
-    align-items: center;
-    line-height: $card-header-height;
+    align-items: baseline;
 
     &--condensed {
       line-height: 1.5;
@@ -25,7 +24,7 @@
     }
 
     span {
-      padding-left: $size-m;
+      margin-left: $size-m;
     }
 
     .event-name {
@@ -46,12 +45,26 @@
 
     .event-people {
       font-weight: $font-weight-semibold;
-      color: $color-dd-gray;
+      color: $color-gray;
+
+      .total {
+        line-height: 1.5em;
+        width: 1.5em;
+        border-radius: 50%;
+        background: $color-secondary;
+        color: white;
+        display: inline-block;
+        text-align: center;
+        font-weight: $font-weight-semibold;
+
+        & + span {
+          margin-left: $size-xxxxs;
+        }
+      }
     }
 
     .event-description {
       color: $color-dd-gray;
-      font-style: italic;
     }
   }
 
