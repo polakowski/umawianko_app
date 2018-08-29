@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :rememberable, :trackable
 
-  has_many :created_events, class_name: Event, foreign_key: :creator_id, inverse_of: :creator
+  has_many :created_events, class_name: 'Event', foreign_key: :creator_id, inverse_of: :creator
+  has_many :event_users, inverse_of: :user
+  has_many :joined_events, through: :event_users, source: :event
 
   def self.create_with_omniauth(auth)
     user = User.new
