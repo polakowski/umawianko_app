@@ -8,6 +8,10 @@
       wrapper_html: { class: 'datetimepicker-wrapper' }
     %>
     <%= f.input :description, as: :text %>
+    <%= f.input :auto_join, as: :boolean do |checkbox| %>
+      <%= f.check_box :auto_join %>
+      <label for='event_auto_join' class='checkbox'></label>
+    <% end %>
     <div class='simple_form__actions'>
       <%= f.submit 'Submit', class: 'btn btn--secondary btn--wide' %>
     </div>

@@ -4,7 +4,8 @@ class EventsController < AuthenticatedController
   end
 
   def new
-    @event = Event.new
+    @resource = Event.new
+    @event = EventForm::CreateEvent.new(@resource)
   end
 
   def create

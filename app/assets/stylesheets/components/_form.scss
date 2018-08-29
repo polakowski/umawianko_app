@@ -1,16 +1,21 @@
 $labels-gutter-width: 10 * $size-m;
 
 .simple_form {
-  .input.string, .input.text {
+  .input.string, .input.text, .input.boolean {
     display: flex;
 
     label {
       flex: 0 0 $labels-gutter-width;
       text-align: right;
-      padding-top: $size-s;
       font-weight: $font-weight-semibold;
       color: $color-dd-gray;
       margin-right: $size-m;
+    }
+  }
+
+  .input.string, .input.text {
+    label {
+      padding-top: $size-s;
     }
   }
 
@@ -53,9 +58,79 @@ $labels-gutter-width: 10 * $size-m;
       border-radius: 0 0 $btn-border-radius $btn-border-radius;
       color: $color-error;
     }
+
+    label.checkbox {
+      flex-basis: auto;
+      margin: 0;
+      text-align: left;
+    }
+  }
+
+  .input.boolean {
+    $checkbox-height: 28px;
+    position: relative;
+
+    .input-content {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .hint {
+      line-height: $checkbox-height;
+      margin-left: $size-xxs;
+      color: $color-l-gray;
+      font-weight: $font-weight-semibold;
+    }
+
+    & > label {
+      line-height: $checkbox-height;
+    }
+
+    input[type='checkbox'] {
+      visibility: hidden;
+      position: absolute;
+
+      & + label.checkbox {
+        @extend .umi;
+        padding-top: 0;
+        align-self: flex-start;
+      }
+
+      & + label.checkbox:after {
+        @extend .umi--checkmark:before;
+
+        color: transparent;
+        display: inline-block;
+        cursor: pointer;
+        width: $checkbox-height;
+        height: $checkbox-height;
+        border: 2px solid $color-l-gray;
+        border-radius: 50%;
+        box-sizing: border-box;
+        padding: 3px;
+        text-align: center;
+        line-height: 20px;
+        will-change: border-color, color, background;
+        transition:
+          border-color $link-anim-duration ease,
+          color $link-anim-duration ease,
+          background $link-anim-duration ease;
+      }
+
+      & + label.checkbox:hover:after {
+        border-color: $color-secondary;
+      }
+
+      &:checked + label.checkbox:after {
+        color: white;
+        background: $color-secondary;
+        border-color: $color-secondary;
+      }
+    }
   }
 
   &__actions {
+    margin-top: $size-m;
     margin-left: $labels-gutter-width + $size-m;
   }
 }

@@ -36,9 +36,14 @@ en:
         place: 'Place'
         datetime: 'Event time'
         description: 'Description'
+        auto_join: 'Auto-join'
 
     placeholders:
       event:
         name: 'What?'
         place: 'Where?'
         datetime: 'When?'
+
+    hints:
+      event:
+        auto_join: 'Check if you want to participate'
