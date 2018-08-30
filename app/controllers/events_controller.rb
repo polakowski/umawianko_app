@@ -31,7 +31,7 @@ class EventsController < AuthenticatedController
   end
 
   def update
-    @resource = Event.new
+    @resource = Event.find(params[:id])
     @event = EventForm::CreateEvent.new(@resource, event_params).as(current_user)
 
     if @event.save

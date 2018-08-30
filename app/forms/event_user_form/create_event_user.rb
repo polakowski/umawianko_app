@@ -1,8 +1,9 @@
 module EventUserForm
   class CreateEventUser < EventUserForm::Base
     attribute :event_id, Integer
-    attribute :friends_count, Integer, default: 0
+    attribute :friends_count, Integer
 
+    validates :friends_count, presence: true
     validate :friends_count_numericality
 
     private

@@ -8,6 +8,6 @@ module EventsHelper
   end
 
   def format_event_people_hint(event)
-    "(#{event.users_joined.count} + #{event.friends_count} friends)"
+    "(#{event.users_joined.count} + #{pluralize(event.friends_count, 'friend')})"
   end
 end

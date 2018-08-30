@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       cookies.signed[:user_id] = user.id
       redirect_to root_url, notice: 'Signed in!'
     else
-      redirect_to root_path, alert: 'You are not from Selleo!'
+      redirect_to root_path, error: 'Your domain is not allowed.'
     end
   end
 

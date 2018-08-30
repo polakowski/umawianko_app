@@ -31,7 +31,7 @@
     </div>
 
     <h2 class='m-m--b m-l--t deco-header header--m'><span>
-      Participants (<%= @event.users_joined.count %> users)
+      Participants (<%= pluralize(@event.users_joined.count, 'user') %>)
     </span></h2>
 
     <%- @event.event_users.includes(:user).map do |event_user| %>

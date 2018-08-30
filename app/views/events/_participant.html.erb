@@ -6,7 +6,9 @@
     <h3><%= format_user_or_current_user(event_user.user) %></h3>
 
     <% if event_user.friends_count.nonzero? %>
-      <span class='subtext'>Will bring <%= event_user.friends_count %> friends</span>
+      <span class='subtext'>
+        Will bring <%= pluralize(event_user.friends_count, 'friend') %>
+      </span>
     <% end %>
   </div>
 </div>

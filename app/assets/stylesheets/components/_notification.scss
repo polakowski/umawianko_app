@@ -30,4 +30,14 @@ $notification-icon-size: 28px;
       border-color: $color-success;
     }
   }
+
+  &--notice {
+    border-color: $color-dd-gray;
+    color: $color-dd-gray;
+
+    &:before {
+      @extend .umi--place;
+      border-color: $color-dd-gray;
+    }
+  }
 }
