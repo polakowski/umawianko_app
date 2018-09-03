@@ -1,1 +1,18 @@
 language: ruby
+sudo: false
+install:
+  - bundle install --without development --deployment --jobs=3 --retry=3
+cache: bundler
+services:
+  - postgresql
+addons:
+  postgresql: '9.4'
+env:
+  - RAILS_ENV=test
+before_install:
+  - cp -f config/database.ci.yml config/database.yml
+before_script:
+  - bundle clean --force
+  - bundle exec rake db:create db:migrate
+script:
+  - bundle exec rspec spec

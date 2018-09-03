@@ -32,7 +32,10 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'dotenv-rails', '2.2.1'
-  gem "pry-rails", "~> 0.3.5"
+  gem 'pry-rails', '~> 0.3.5'
+  gem 'rspec-rails', '~> 3.7.0'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -40,6 +43,10 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'rack_session_access', '~> 0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :rememberable, :trackable
+  devise :database_authenticatable, :rememberable
 
   has_many :created_events, class_name: 'Event', foreign_key: :creator_id, inverse_of: :creator
   has_many :event_users, inverse_of: :user
