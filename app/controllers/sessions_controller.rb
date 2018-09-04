@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  SESSION_KEY = :user_id
+
   before_action :authenticate_user!, except: %i[new create]
 
   def new
@@ -10,10 +12,7 @@ class SessionsController < ApplicationController
 
     if valid_email?
       user = find_or_create_user
-      user.update(image: auth['info']['image']) if user.image.blank?
-      reset_session
-      session[:user_id] = user.id
-      cookies.signed[:user_id] = user.id
+      update_and_sign_in(user)
       redirect_to root_url, notice: 'Signed in!'
     else
       redirect_to root_path, error: 'Your domain is not allowed.'
@@ -31,8 +30,17 @@ class SessionsController < ApplicationController
 
   private
 
+  attr_reader :auth
+
   def find_or_create_user
     User.find_by(uid: @auth['uid'].to_s) || User.create_with_omniauth(@auth)
+  end
+
+  def update_and_sign_in(user)
+    user.update(image: auth['info']['image']) if user.image.blank?
+    reset_session
+    session[SESSION_KEY] = user.id
+    cookies.signed[SESSION_KEY] = user.id
   end
 
   def valid_email?
@@ -47,8 +55,4 @@ class SessionsController < ApplicationController
   def allowed_domains
     ENV.fetch('ALLOWED_DOMAINS').split(',')
   end
-
-  private
-
-  attr_reader :auth
 end

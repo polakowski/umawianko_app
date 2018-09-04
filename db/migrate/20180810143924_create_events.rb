@@ -6,6 +6,8 @@ class CreateEvents < ActiveRecord::Migration[5.1]
       t.string :place
       t.datetime :datetime
       t.integer :creator_id
+
+      t.timestamps null: false
     end
   end
 end

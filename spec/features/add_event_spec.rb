@@ -1,7 +1,7 @@
 describe 'add event', type: :feature do
   context 'with auto-join not checked' do
     scenario 'creates an event and assigns creator' do
-      travel_to Time.zone.local(2018, 2, 1, 10, 00, 00) do
+      travel_to Time.zone.local(2018, 2, 1, 10, 0, 0) do
         current_user = create(:user)
         signed_in_as current_user
         visit '/events/new'
@@ -21,7 +21,7 @@ describe 'add event', type: :feature do
 
   context 'with auto-join checked' do
     scenario 'creates an event and assigns creator' do
-      travel_to Time.zone.local(2018, 1, 1, 10, 00, 00) do
+      travel_to Time.zone.local(2018, 1, 1, 10, 0, 0) do
         current_user = create(:user)
         signed_in_as current_user
         visit '/events/new'

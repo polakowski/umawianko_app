@@ -14,7 +14,7 @@ module EventUserForm
 
     def join_event
       event = Event.find(event_id)
-      resource = Events::JoinEvent.call(event, form_owner, friends_count).result
+      @resource = Events::JoinEvent.call(event, form_owner, friends_count).result
     end
 
     def friends_count_numericality
