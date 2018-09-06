@@ -1,0 +1,143 @@
+.datetimepicker-wrapper {
+  position: relative;
+
+  & > input:focus + .bootstrap-datetimepicker-widget {
+    border-color: $color-secondary;
+  }
+}
+
+.bootstrap-datetimepicker-widget {
+  position: absolute;
+  right: 0 !important;
+  background: white;
+  border-radius: $btn-border-radius;
+  border: 1px solid $color-page-bg-tint;
+  margin: $size-xxxs 0;
+  padding: $size-s;
+  z-index: 100;
+
+  *[data-action] {
+    cursor: pointer;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+  }
+
+  .datepicker {
+    flex: 2 0;
+  }
+
+  .day, .month, .year, .hour, .minute, .decade {
+    text-align: center;
+    border-radius: $datepicker-border-radius;
+
+    &:hover {
+      background: $color-llll-gray;
+    }
+  }
+
+  .table-condensed {
+    width: 100%;
+
+    thead tr:first-child {
+      height: 2em;
+      vertical-align: top;
+    }
+  }
+
+  .datepicker-days {
+    .day {
+      position: relative;
+      width: 14.2857143%;
+
+      &.old, &.new {
+        color: $color-l-gray;
+      }
+
+      &.active {
+        color: white;
+        background: $color-secondary;
+      }
+
+      &.today:after {
+        content: '';
+        display: inline-block;
+        border: solid transparent;
+        border-width: 0 0 7px 7px;
+        border-bottom-color: $color-secondary;
+        position: absolute;
+        right: 4px;
+        bottom: 4px;
+      }
+
+      &.active.today:after {
+        border-bottom-color: white;
+      }
+    }
+  }
+
+  .datepicker-months {
+    width: 100%;
+
+    .table-condensed {
+      width: 100%;
+    }
+
+    .month {
+      display: inline-block;
+      width: 25%;
+    }
+  }
+
+  .datepicker-years {
+    .year {
+      display: inline-block;
+      width: 25%;
+    }
+  }
+
+  .datepicker-decades {
+    .decade {
+      display: inline-block;
+      width: 33.33333333%;
+    }
+  }
+
+  .timepicker {
+    flex: 1 0;
+    margin-left: $size-m;
+  }
+
+  .timepicker-minute, .timepicker-hour {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .glyphicon {
+    @extend .umi;
+
+    &.glyphicon-chevron-up {
+      @extend .umi--chevron-up;
+    }
+
+    &.glyphicon-chevron-down {
+      @extend .umi--chevron-down;
+    }
+
+    &.glyphicon-chevron-right {
+      @extend .umi--chevron-right;
+    }
+
+    &.glyphicon-chevron-left {
+      @extend .umi--chevron-left;
+    }
+  }
+}
+
+// TEMPORARY
+.glyphicon:before {
+  content: '@'
+}

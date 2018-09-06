@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'um-icons';
+  src: asset-url('um-icons.eot');
+  src: asset-url('um-icons.eot') format('embedded-opentype'),
+    asset-url('um-icons.ttf') format('truetype'),
+    asset-url('um-icons.woff') format('woff');
+}
+
+.umi {
+  font-family: 'um-icons';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &--place:before {
+    content: "\e900";
+  }
+
+  &--chevron-right:before {
+    content: "\e901";
+  }
+
+  &--chevron-left:before {
+    content: "\e902";
+  }
+
+  &--chevron-down:before {
+    content: "\e903";
+  }
+
+  &--chevron-up:before {
+    content: "\e904";
+  }
+
+  &--checkmark:before {
+    content: "\e905";
+  }
+
+  &--error-outline:before {
+    content: "\e906";
+  }
+}

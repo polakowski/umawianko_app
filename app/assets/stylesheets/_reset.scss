@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html, body {
@@ -12,4 +13,12 @@ html, body {
 a, a:active, a:focus, a:hover, a:visited {
   text-decoration: none;
   outline: none;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+ul, li, ol {
+  list-style: none;
 }

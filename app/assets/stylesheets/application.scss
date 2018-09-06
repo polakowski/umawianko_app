@@ -16,8 +16,18 @@
 @import 'variables';
 @import 'reset';
 
-@import 'shared/margins_and_paddings';
-@import 'shared/utils';
+@import 'shared/btn';
+@import 'shared/deco-header';
 @import 'shared/layout';
+@import 'shared/link';
+@import 'shared/margins_and_paddings';
+@import 'shared/text';
+@import 'shared/utils';
+@import 'shared/icons';
 
+@import 'components/datetimepicker';
+@import 'components/event-card';
+@import 'components/event-page';
+@import 'components/form';
 @import 'components/global-header';
+@import 'components/notification';

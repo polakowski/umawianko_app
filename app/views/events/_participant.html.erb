@@ -1,0 +1,14 @@
+<div class='event-participant'>
+  <div class='event-participant__image-wrapper'>
+    <img src="<%= event_user.user.image %>" alt=''>
+  </div>
+  <div class='event-participant__name'>
+    <h3><%= format_user_or_current_user(event_user.user) %></h3>
+
+    <% if event_user.friends_count.nonzero? %>
+      <span class='subtext'>
+        Will bring <%= pluralize(event_user.friends_count, 'friend') %>
+      </span>
+    <% end %>
+  </div>
+</div>

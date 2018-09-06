@@ -1,0 +1,144 @@
+$labels-gutter-width: 10 * $size-m;
+
+.simple_form {
+  .input.string, .input.text, .input.boolean {
+    display: flex;
+
+    label {
+      flex: 0 0 $labels-gutter-width;
+      text-align: right;
+      font-weight: $font-weight-semibold;
+      color: $color-dd-gray;
+      margin-right: $size-m;
+    }
+
+    .hint {
+      color: $color-l-gray;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  .input.string, .input.text {
+    label {
+      padding-top: $size-s;
+    }
+  }
+
+  .input.input--invalid {
+    .input-content:after {
+      @extend .umi;
+      content: "\e906";
+      position: absolute;
+      padding: $size-s + 2px;
+      line-height: $font-size-m;
+      font-size: $font-size-xxl;
+      right: 0;
+      top: 0;
+      color: $color-error;
+    }
+  }
+
+  input.string, textarea.text, input[type='number'] {
+    font-size: $font-size-m;
+    font-family: $font-family-base;
+    border-radius: $btn-border-radius;
+    border: 1px solid $color-page-bg-tint;
+    padding: $size-s;
+
+    &:active, &:focus {
+      outline: none;
+      border-color: $color-secondary;
+    }
+  }
+
+  input[type=number]::-webkit-inner-spin-button {
+    font-size: 2em;
+  }
+
+  .input-content {
+    margin-bottom: $size-m;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+
+    .error {
+      padding: $size-xxxs 0;
+      border-radius: 0 0 $btn-border-radius $btn-border-radius;
+      color: $color-error;
+    }
+
+    label.checkbox {
+      flex-basis: auto;
+      margin: 0;
+      text-align: left;
+    }
+  }
+
+  .input.boolean {
+    $checkbox-height: 28px;
+    position: relative;
+
+    .input-content {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .hint {
+      line-height: $checkbox-height;
+      margin-left: $size-xxs;
+    }
+
+    & > label {
+      line-height: $checkbox-height;
+    }
+
+    input[type='checkbox'] {
+      visibility: hidden;
+      position: absolute;
+
+      & + label.checkbox {
+        @extend .umi;
+        padding-top: 0;
+        font-size: $font-size-s;
+        align-self: flex-start;
+      }
+
+      & + label.checkbox:after {
+        @extend .umi--checkmark:before;
+
+        color: transparent;
+        display: inline-block;
+        cursor: pointer;
+        width: $checkbox-height;
+        height: $checkbox-height;
+        border: 2px solid $color-l-gray;
+        border-radius: 50%;
+        box-sizing: border-box;
+        padding: 3px;
+        text-align: center;
+        line-height: 20px;
+        will-change: border-color, color, background;
+        transition:
+          border-color $link-anim-duration ease,
+          color $link-anim-duration ease,
+          background $link-anim-duration ease;
+      }
+
+      & + label.checkbox:hover:after {
+        border-color: $color-secondary;
+      }
+
+      &:checked + label.checkbox:after {
+        color: white;
+        background: $color-secondary;
+        border-color: $color-secondary;
+      }
+    }
+  }
+
+  &__actions {
+    margin-top: $size-m;
+    margin-left: $labels-gutter-width + $size-m;
+  }
+}

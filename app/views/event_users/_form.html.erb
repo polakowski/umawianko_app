@@ -1,0 +1,16 @@
+<div class='fluid-content-wrapper p-m--t'>
+  <% if @event_user.persisted? %>
+    <h1 class='m-m--b header--l'>Edit application - <%= @event.name %></h1>
+  <% else %>
+    <h1 class='m-m--b header--l'>Join <%= @event.name %></h1>
+  <% end %>
+
+  <%= simple_form_for [@event, @event_user] do |f| %>
+    <%= f.input :friends_count do %>
+      <%= number_field_tag 'event_user[friends_count]', @event_user.friends_count, in: 0..100 %>
+    <% end %>
+    <div class='simple_form__actions'>
+      <%= f.submit event_user_submit_text(@event_user), class: 'btn btn--secondary btn--large' %>
+    </div>
+  <% end %>
+</div>

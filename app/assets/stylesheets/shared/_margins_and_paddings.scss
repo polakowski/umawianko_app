@@ -35,6 +35,10 @@
   @include padding-container($size-m);
 }
 
+.p-xxxl {
+  @include padding-container($size-xxxl);
+}
+
 .p-s {
   @include padding-container($size-s);
 }

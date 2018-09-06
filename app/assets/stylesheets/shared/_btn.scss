@@ -1,0 +1,52 @@
+@mixin classic-button($color) {
+  border: 1px solid $color;
+  color: $color;
+
+  &:hover, &:focus {
+    background: $color;
+    color: white;
+  }
+}
+
+.btn {
+  border-radius: $btn-border-radius;
+  font-size: $font-size-m;
+  padding: $size-xxs $size-l;
+  background: transparent;
+  will-change: border, color, background;
+  transition: all $link-anim-duration ease;
+  display: inline-block;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &--wide {
+    min-width: 8 * $size-m;
+  }
+
+  &--large {
+    font-size: $font-size-xl;
+    padding-left: 2 * $size-xxxl;
+    padding-right: 2 * $size-xxxl;
+  }
+
+  &--primary {
+    @include classic-button($color-primary);
+  }
+
+  &--secondary {
+    @include classic-button($color-secondary);
+  }
+
+  &[disabled] {
+    speak: none;
+    color: $color-cancel;
+    border-color: $color-cancel;
+    pointer-events: none;
+  }
+}

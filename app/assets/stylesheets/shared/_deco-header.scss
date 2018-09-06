@@ -1,0 +1,21 @@
+.deco-header {
+  text-align: center;
+  position: relative;
+  color: $color-ddd-gray;
+
+  &:before {
+    content: '';
+    height: 2px;
+    background: $color-ll-gray;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+  }
+
+  span {
+    background: $color-page-bg;
+    padding: 0 $size-m;
+    position: relative;
+  }
+}
