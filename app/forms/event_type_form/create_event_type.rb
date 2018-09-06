@@ -7,8 +7,9 @@ module EventTypeForm
     attribute :name, String
     attribute :slack_webhook, String
     attribute :color, String
+    attribute :icon, String
 
-    validates :name, :slack_webhook, presence: true
+    validates :name, presence: true
     validate :color_format
 
     private

@@ -10,7 +10,7 @@ module Slack
       gray: '#8e8e8e'
     }.freeze
 
-    def self.call(webhook, color = DEFAULT_COLOR, &block)
+    def self.call(webhook, color = DEFAULT_COLOR)
       raise(Umawianko::RuntimeError, 'Slack webhook is required') if webhook.blank?
       raise(Umawianko::RuntimeError, "Invalid color #{color}") if COLORS[color].blank?
 

@@ -38,17 +38,31 @@ module EventForm
     end
 
     def send_notification
+      return true if resource.event_type.slack_webhook.blank?
+
       Slack::SendNotification.call(resource.event_type.slack_webhook) do |msg|
-        msg.fallback = 'New event!'
-        msg.title = name
-        msg.text = "[Click here to view new event](#{resource.permalink})"
-        msg.footer = resource.creator.name
-        msg.footer_icon = resource.creator.image
-        msg.fields = [
-          { short: true, title: 'When', value: format_event_date_and_time(resource) },
-          { short: true, title: 'Where', value: resource.place }
-        ]
+        assign_notification_data(msg)
+        assign_notification_fields(msg)
+        assign_notification_footer(msg)
       end
+    end
+
+    def assign_notification_data(msg)
+      msg.fallback = 'New event!'
+      msg.title = name
+      msg.text = "[Click here to view new event](#{resource.permalink})"
+    end
+
+    def assign_notification_fields(msg)
+      msg.fields = [
+        { short: true, title: 'When', value: format_event_date_and_time(resource) },
+        { short: true, title: 'Where', value: resource.place }
+      ]
+    end
+
+    def assign_notification_footer(msg)
+      msg.footer = resource.creator.name
+      msg.footer_icon = resource.creator.image
     end
   end
 end

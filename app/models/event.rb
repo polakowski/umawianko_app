@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  DEFAULT_ICON = 'checkmark'.freeze
+
   scope :upcoming, -> { where('datetime > ?', Time.zone.now).order(:datetime) }
 
   belongs_to :creator, class_name: 'User', inverse_of: :created_events

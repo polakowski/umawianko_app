@@ -14,4 +14,12 @@ module EventsHelper
   def format_event_people_hint(event)
     "(#{event.users_joined.count} + #{pluralize(event.friends_count, 'friend')})"
   end
+
+  def event_circle_style(event)
+    "background: #{event.event_type.color}"
+  end
+
+  def event_circle_icon(event)
+    event.event_type.icon.presence || Event::DEFAULT_ICON
+  end
 end
