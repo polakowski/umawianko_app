@@ -1,7 +1,7 @@
 $labels-gutter-width: 10 * $size-m;
 
 .simple_form {
-  .input.string, .input.text, .input.boolean {
+  .input.string, .input.text, .input.boolean, .input.select {
     display: flex;
 
     label {
@@ -18,7 +18,7 @@ $labels-gutter-width: 10 * $size-m;
     }
   }
 
-  .input.string, .input.text {
+  .input.string, .input.text, .input.select {
     label {
       padding-top: $size-s;
     }
@@ -38,17 +38,24 @@ $labels-gutter-width: 10 * $size-m;
     }
   }
 
-  input.string, textarea.text, input[type='number'] {
+  input.string, textarea.text, input[type='number'], select.select {
     font-size: $font-size-m;
     font-family: $font-family-base;
     border-radius: $btn-border-radius;
     border: 1px solid $color-page-bg-tint;
     padding: $size-s;
+    background: #fff;
 
     &:active, &:focus {
       outline: none;
       border-color: $color-secondary;
     }
+  }
+
+  select.select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
   }
 
   input[type=number]::-webkit-inner-spin-button {

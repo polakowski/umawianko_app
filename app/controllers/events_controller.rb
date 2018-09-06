@@ -6,11 +6,13 @@ class EventsController < AuthenticatedController
   def new
     @resource = Event.new
     @event = EventForm::CreateEvent.new(@resource)
+    @event_types = EventType.all
   end
 
   def create
     @resource = Event.new
     @event = EventForm::CreateEvent.new(@resource, event_params).as(current_user)
+    @event_types = EventType.all
 
     if @event.save
       flash[:success] = 'Event created!'
@@ -27,12 +29,12 @@ class EventsController < AuthenticatedController
 
   def edit
     @resource = Event.find(params[:id])
-    @event = EventForm::CreateEvent.new(@resource)
+    @event = EventForm::UpdateEvent.new(@resource)
   end
 
   def update
     @resource = Event.find(params[:id])
-    @event = EventForm::CreateEvent.new(@resource, event_params).as(current_user)
+    @event = EventForm::UpdateEvent.new(@resource, event_params).as(current_user)
 
     if @event.save
       flash[:success] = 'Successfully updated event!'

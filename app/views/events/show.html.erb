@@ -12,8 +12,7 @@
     <div class='event-page__data m-m--b'>
       <label>When?</label>
       <span class='event-datetime'>
-        <%= format_event_date(@event) %>
-        <%= format_event_time(@event) %>
+        <%= format_event_date_and_time(@event) %>
       </span>
     </div>
     <% if @event.description.present? %>

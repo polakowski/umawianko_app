@@ -6,15 +6,17 @@
   <% end %>
 
 
-  <%= simple_form_for @event do |f| %>
+  <%= simple_form_for @event, html: { autocomplete: 'off' } do |f| %>
     <%= f.input :name %>
     <%= f.input :place %>
 
     <% unless @event.persisted? %>
-      <%= f.input :datetime, as: 'string',
+      <%= f.input :datetime, as: :string,
         input_html: { id: 'datetimepicker' },
         wrapper_html: { class: 'datetimepicker-wrapper' }
       %>
+
+      <%= f.input :event_type_id, as: :select, collection: @event_types %>
     <% end %>
 
     <%= f.input :description, as: :text, input_html: { rows: 5 } %>
