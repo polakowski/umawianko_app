@@ -5,9 +5,12 @@
       <label></label>
       <div class='event-heading'>
         <span class='event-heading__name'><%= @event.name %></span>
-        <span class='event-heading__badge' style="<%= event_circle_style(@event) %>">
-          <%= @event.event_type.name %>
-        </span>
+        <%= link_to(
+          @event.event_type.name,
+          events_path(event_type_id: @event.event_type_id),
+          class: 'm-m--l event-heading__badge',
+          style: event_circle_style(@event)
+        ) %>
       </div>
     </div>
     <div class='event-page__data m-m--b'>
