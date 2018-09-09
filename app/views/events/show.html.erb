@@ -3,7 +3,12 @@
     <h1 class='m-m--b deco-header'><span>Event details</span></h1>
     <div class='event-page__data m-xs--b'>
       <label></label>
-      <span class='event-name'><%= @event.name %></span>
+      <div class='event-heading'>
+        <span class='event-heading__name'><%= @event.name %></span>
+        <span class='event-heading__badge' style="<%= event_circle_style(@event) %>">
+          <%= @event.event_type.name %>
+        </span>
+      </div>
     </div>
     <div class='event-page__data m-m--b'>
       <label>Where?</label>
