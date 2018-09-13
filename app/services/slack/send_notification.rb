@@ -1,5 +1,8 @@
 module Slack
   class SendNotification
+    # this sends notification using slack webhook API
+    # learn how to build notifications: https://api.slack.com/docs/messages
+
     DEFAULT_COLOR = :blue
 
     COLORS = {

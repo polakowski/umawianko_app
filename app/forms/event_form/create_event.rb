@@ -44,8 +44,9 @@ module EventForm
 
     def assign_notification_data(msg)
       msg.fallback = 'New event!'
-      msg.title = "New event: \"#{name}\""
-      msg.text = "[Click here to view event](#{resource.permalink})"
+      msg.author_name = 'New event'
+      msg.title = name
+      msg.title_link = resource.permalink
     end
 
     def assign_notification_fields(msg)
