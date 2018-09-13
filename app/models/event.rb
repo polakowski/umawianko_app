@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   scope :of_event_type_id, ->(param) { where(event_type_id: param) }
 
   belongs_to :creator, class_name: 'User', inverse_of: :created_events
-  has_many :event_users, dependent: :destroy
+  has_many :event_users, dependent: :restrict_with_exception
   has_many :users_joined, through: :event_users, source: :user
   belongs_to :event_type, inverse_of: :events
 
