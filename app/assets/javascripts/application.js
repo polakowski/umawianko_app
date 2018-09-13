@@ -17,3 +17,23 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require_tree .
+
+moment.updateLocale('en', {
+  week: { dow: 1 }
+});
+
+function datetimepicker(selector) {
+  $(function() {
+    $(selector).datetimepicker({
+      sideBySide: true,
+      format: 'YYYY-MM-D HH:mm',
+      stepping: 15,
+      icons: {
+        up: 'umi umi--chevron-up',
+        down: 'umi umi--chevron-down',
+        next: 'umi umi--chevron-right',
+        previous: 'umi umi--chevron-left'
+      }
+    });
+  });
+}

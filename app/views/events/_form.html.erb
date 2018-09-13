@@ -37,11 +37,6 @@
 
 <% unless @event.persisted? %>
   <script type='text/javascript'>
-    $(function() {
-      $('#datetimepicker').datetimepicker({
-        sideBySide: true,
-        format: 'YYYY-MM-D hh:mm A'
-      });
-    });
+    datetimepicker('#datetimepicker');
   </script>
 <% end %>
