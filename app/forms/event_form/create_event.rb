@@ -9,7 +9,7 @@ module EventForm
     attribute :event_type_id, Integer
 
     validates :datetime, :event_type_id, presence: true
-    validate :datetime_not_past
+    validates :datetime, future: true
 
     private
 
@@ -32,11 +32,6 @@ module EventForm
       Events::JoinEvent.call(resource, form_owner).result
     end
 
-    def datetime_not_past
-      return if datetime.blank?
-      errors.add(:datetime, I18n.t('errors.event.datetime_in_past')) if datetime.past?
-    end
-
     def send_notification
       return true if resource.event_type.slack_webhook.blank?
 
@@ -49,8 +44,8 @@ module EventForm
 
     def assign_notification_data(msg)
       msg.fallback = 'New event!'
-      msg.title = name
-      msg.text = "[Click here to view new event](#{resource.permalink})"
+      msg.title = "New event: \"#{name}\""
+      msg.text = "[Click here to view event](#{resource.permalink})"
     end
 
     def assign_notification_fields(msg)

@@ -49,6 +49,7 @@ end
 
 group :test do
   gem 'rack_session_access', '~> 0'
+  gem 'shoulda-matchers', '~> 3.1.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
