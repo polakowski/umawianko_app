@@ -107,7 +107,7 @@ $labels-gutter-width: 10 * $size-m;
       & + label.checkbox {
         @extend .umi;
         padding-top: 0;
-        font-size: $font-size-s;
+        font-size: $font-size-m;
         align-self: flex-start;
       }
 

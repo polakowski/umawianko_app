@@ -28,8 +28,8 @@ describe EventForm::CreateEvent, type: :form do
       context 'when event_type has no slack_webhook' do
         it 'does not send slack notification' do
           user = create(:user)
-          event_type = create(:event_type, slack_webhook: 'http://example.com/webhook')
-          attrs = attributes_for(:upcoming_event)
+          event_type = create(:event_type)
+          attrs = attributes_for(:upcoming_event).merge(event_type_id: event_type.id)
           form = EventForm::CreateEvent.new(Event.new, attrs).as(user)
           allow(Slack::SendNotification).to receive(:call)
 

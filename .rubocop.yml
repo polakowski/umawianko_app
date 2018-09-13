@@ -89,3 +89,7 @@ Layout/MultilineMethodCallIndentation:
 Style/AndOr:
   Exclude:
     - 'app/forms/**/*.rb'
+
+Lint/UnusedMethodArgument:
+  Exclude:
+    - 'app/validators/*_validator.rb'

@@ -16,7 +16,8 @@
         wrapper_html: { class: 'datetimepicker-wrapper' }
       %>
 
-      <%= f.input :event_type_id, as: :select, collection: @event_types %>
+      <%= f.input :event_type_id, as: :select, collection: @event_types,
+        include_blank: t('simple_form.placeholders.event.event_type_id') %>
     <% end %>
 
     <%= f.input :description, as: :text, input_html: { rows: 5 } %>
