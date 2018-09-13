@@ -9,7 +9,7 @@
           @event.event_type.name,
           events_path(event_type_id: @event.event_type_id),
           class: 'm-m--l event-heading__badge',
-          style: event_circle_style(@event)
+          style: "background: #{event_type_bg_color(@event)}"
         ) %>
       </div>
     </div>

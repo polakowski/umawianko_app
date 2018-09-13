@@ -21,7 +21,7 @@ describe EventForm::CreateEvent, type: :form do
           form.save
 
           expect(Slack::SendNotification).to have_received(:call)
-            .once.with('http://example.com/webhook')
+            .once.with('http://example.com/webhook', '#aaa')
         end
       end
 

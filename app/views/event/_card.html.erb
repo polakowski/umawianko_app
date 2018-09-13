@@ -3,7 +3,7 @@
     <div class='event-card__date m-m--r'>
       <%= format_event_date(event) %>
     </div>
-    <div class='event-card__circle' style="<%= event_circle_style(event) %>">
+    <div class='event-card__circle' style="background: <%= event_type_bg_color(event) %>">
       <span class="umi umi--<%= event_circle_icon(event) %>"></span>
     </div>
   </div>
