@@ -5,15 +5,15 @@ default: &default
 
 development:
   <<: *default
-  database: db/umawianko_development
+  database: umawianko_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/umawianko_test
+  database: umawianko_test
 
 production:
   <<: *default
-  database: db/umawianko_production
+  database: umawianko_production
