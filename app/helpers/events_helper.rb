@@ -15,11 +15,11 @@ module EventsHelper
     "(#{event.users_joined.count} + #{pluralize(event.friends_count, 'friend')})"
   end
 
-  def event_circle_style(event)
-    "background: #{event.event_type.color}"
+  def event_type_bg_color(event)
+    event.event_type.color.presence || EventType::DEFAULT_COLOR
   end
 
   def event_circle_icon(event)
-    event.event_type.icon.presence || Event::DEFAULT_ICON
+    event.event_type.icon.presence || EventType::DEFAULT_ICON
   end
 end

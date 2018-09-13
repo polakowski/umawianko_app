@@ -1,6 +1,4 @@
 class Event < ApplicationRecord
-  DEFAULT_ICON = 'event-checkmark'.freeze
-
   scope :upcoming, -> { where('datetime > ?', Time.zone.now).order(:datetime) }
   scope :of_event_type_id, ->(param) { where(event_type_id: param) }
 

@@ -35,7 +35,10 @@ module EventForm
     def send_notification
       return true if resource.event_type.slack_webhook.blank?
 
-      Slack::SendNotification.call(resource.event_type.slack_webhook) do |msg|
+      Slack::SendNotification.call(
+        resource.event_type.slack_webhook,
+        resource.event_type.color_or_default
+      ) do |msg|
         assign_notification_data(msg)
         assign_notification_fields(msg)
         assign_notification_footer(msg)

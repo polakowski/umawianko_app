@@ -63,7 +63,8 @@ describe 'add event', type: :feature do
           click_button 'Submit'
 
           expect(Slack::SendNotification).to have_received(:call).once.with(
-            'https://foo.com/webhook'
+            'https://foo.com/webhook',
+            '#aaa'
           )
         end
       end

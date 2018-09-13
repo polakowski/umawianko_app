@@ -7,14 +7,6 @@ describe Slack::SendNotification do
     end
   end
 
-  context 'if provided color is invalid' do
-    it 'raises error' do
-      expect {
-        Slack::SendNotification.call('http://example.com/webhook', :invalid_color)
-      }.to raise_error(Umawianko::RuntimeError)
-    end
-  end
-
   context 'if provided data is valid' do
     it 'sends notification using slack-notifier gem' do
       notifier = instance_double(Slack::Notifier)
@@ -32,7 +24,7 @@ describe Slack::SendNotification do
       expect(notifier).to have_received(:post).with(
         attachments: include(
           fallback: 'Notification.',
-          color: '#00a1ff',
+          color: '#8e8e8e',
           title: 'Lorem ipsum',
           text: 'Dolor sit amet',
           fields: include(title: 'Foo', value: 'Bar', short: true),
