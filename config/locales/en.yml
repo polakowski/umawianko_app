@@ -33,3 +33,5 @@ en:
   errors:
     event:
       datetime_in_past: "can't be in the past"
+    event_type:
+      color_invalid: 'is not a valid HEX color'

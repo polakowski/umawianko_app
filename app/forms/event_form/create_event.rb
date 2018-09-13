@@ -1,15 +1,20 @@
 module EventForm
   class CreateEvent < EventForm::Base
+    include EventsHelper
+
     param_key 'event'
 
     attribute :auto_join, Boolean
+    attribute :datetime, DateTime
+    attribute :event_type_id, Integer
 
-    validate :datetime_not_past
+    validates :datetime, :event_type_id, presence: true
+    validates :datetime, future: true
 
     private
 
     def persist
-      create_event and auto_assign_creator
+      create_event and auto_assign_creator and send_notification
     end
 
     def create_event
@@ -27,9 +32,32 @@ module EventForm
       Events::JoinEvent.call(resource, form_owner).result
     end
 
-    def datetime_not_past
-      return if datetime.blank?
-      errors.add(:datetime, I18n.t('errors.event.datetime_in_past')) if datetime.past?
+    def send_notification
+      return true if resource.event_type.slack_webhook.blank?
+
+      Slack::SendNotification.call(resource.event_type.slack_webhook) do |msg|
+        assign_notification_data(msg)
+        assign_notification_fields(msg)
+        assign_notification_footer(msg)
+      end
+    end
+
+    def assign_notification_data(msg)
+      msg.fallback = 'New event!'
+      msg.title = "New event: \"#{name}\""
+      msg.text = "[Click here to view event](#{resource.permalink})"
+    end
+
+    def assign_notification_fields(msg)
+      msg.fields = [
+        { short: true, title: 'When', value: format_event_date_and_time(resource) },
+        { short: true, title: 'Where', value: resource.place }
+      ]
+    end
+
+    def assign_notification_footer(msg)
+      msg.footer = resource.creator.name
+      msg.footer_icon = resource.creator.image
     end
   end
 end

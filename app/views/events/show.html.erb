@@ -3,7 +3,15 @@
     <h1 class='m-m--b deco-header'><span>Event details</span></h1>
     <div class='event-page__data m-xs--b'>
       <label></label>
-      <span class='event-name'><%= @event.name %></span>
+      <div class='event-heading'>
+        <span class='event-heading__name'><%= @event.name %></span>
+        <%= link_to(
+          @event.event_type.name,
+          events_path(event_type_id: @event.event_type_id),
+          class: 'm-m--l event-heading__badge',
+          style: event_circle_style(@event)
+        ) %>
+      </div>
     </div>
     <div class='event-page__data m-m--b'>
       <label>Where?</label>
@@ -12,8 +20,7 @@
     <div class='event-page__data m-m--b'>
       <label>When?</label>
       <span class='event-datetime'>
-        <%= format_event_date(@event) %>
-        <%= format_event_time(@event) %>
+        <%= format_event_date_and_time(@event) %>
       </span>
     </div>
     <% if @event.description.present? %>

@@ -21,6 +21,7 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'jquery-rails', '~> 4.3.0'
 gem 'rails-patterns', '~> 0'
+gem 'slack-notifier', '2.3.1'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
@@ -48,6 +49,7 @@ end
 
 group :test do
   gem 'rack_session_access', '~> 0'
+  gem 'shoulda-matchers', '~> 3.1.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

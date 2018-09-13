@@ -3,8 +3,7 @@ module EventForm
     attribute :name, String
     attribute :description, String
     attribute :place, String
-    attribute :datetime, DateTime
 
-    validates :name, :place, :datetime, presence: true
+    validates :name, :place, presence: true
   end
 end

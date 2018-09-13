@@ -27,10 +27,27 @@
       margin-left: $size-m;
     }
 
-    .event-name {
-      font-size: $font-size-xxxl;
-      font-weight: $font-weight-semibold;
-      line-height: $card-header-height;
+    .event-heading {
+      display: flex;
+      align-items: center;
+
+      &__name {
+        font-size: $font-size-xxxl;
+        font-weight: $font-weight-semibold;
+        line-height: $card-header-height;
+      }
+
+      &__badge {
+        padding: $size-xxxxs $size-s;
+        border-radius: 6px;
+        color: white;
+        font-size: $font-size-m;
+        font-weight: $font-weight-semibold;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
 
     .event-place {

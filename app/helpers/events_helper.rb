@@ -7,7 +7,19 @@ module EventsHelper
     event.datetime.strftime('%R')
   end
 
+  def format_event_date_and_time(event)
+    "#{format_event_date(event)} #{format_event_time(event)}"
+  end
+
   def format_event_people_hint(event)
     "(#{event.users_joined.count} + #{pluralize(event.friends_count, 'friend')})"
+  end
+
+  def event_circle_style(event)
+    "background: #{event.event_type.color}"
+  end
+
+  def event_circle_icon(event)
+    event.event_type.icon.presence || Event::DEFAULT_ICON
   end
 end

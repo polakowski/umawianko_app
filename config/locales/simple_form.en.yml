@@ -45,6 +45,8 @@ en:
         name: 'What?'
         place: 'Where?'
         datetime: 'When?'
+        event_type_id: 'Select...'
+        description: 'Provide more information (optional)'
 
     hints:
       event:
