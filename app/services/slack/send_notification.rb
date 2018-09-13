@@ -11,8 +11,8 @@ module Slack
     }.freeze
 
     def self.call(webhook, color = DEFAULT_COLOR)
-      raise(Umawianko::RuntimeError, 'Slack webhook is required') if webhook.blank?
-      raise(Umawianko::RuntimeError, "Invalid color #{color}") if COLORS[color].blank?
+      raise Umawianko::RuntimeError, 'Slack webhook is required' if webhook.blank?
+      raise Umawianko::RuntimeError, "Invalid color #{color}" if COLORS[color].blank?
 
       message = ActiveSupport::OrderedOptions.new.tap do |msg|
         msg.fallback = 'Notification.'
