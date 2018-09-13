@@ -18,6 +18,6 @@ class Event < ApplicationRecord
   end
 
   def permalink
-    "#{ENV['HOST']}/events/#{id}"
+    "#{ENV['DOMAIN_NAME']}/events/#{id}"
   end
 end
