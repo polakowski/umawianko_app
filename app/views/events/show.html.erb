@@ -45,19 +45,21 @@
       <%= render partial: 'events/participant', locals: { event_user: event_user } %>
     <%- end %>
 
-    <div class='event-page__cta-wrapper'>
-      <% if @event_user.nil? %>
-        <%= link_to 'Sign me up!', new_event_event_user_path(@event),
-          class: 'btn btn--primary btn--large' %>
-      <% else %>
-        <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
-          class: 'btn btn--primary btn--large' %>
-      <% end %>
+    <% if @event.future? %>
+      <div class='event-page__cta-wrapper'>
+        <% if @event_user.nil? %>
+          <%= link_to 'Sign me up!', new_event_event_user_path(@event),
+            class: 'btn btn--primary btn--large' %>
+        <% else %>
+          <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
+            class: 'btn btn--primary btn--large' %>
+        <% end %>
 
-      <% if @event.creator == current_user %>
-        <%= link_to 'Edit event',
-          edit_event_path(@event), class: 'btn btn--secondary btn--large m-m--t' %>
-      <% end %>
-    </div>
+        <% if @event.creator == current_user %>
+          <%= link_to 'Edit event',
+            edit_event_path(@event), class: 'btn btn--secondary btn--large m-m--t' %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

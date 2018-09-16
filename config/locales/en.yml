@@ -35,6 +35,7 @@ en:
       datetime_in_past: "can't be in the past"
     event_type:
       color_invalid: 'is not a valid HEX color'
+      datetime_past: 'this event took place in the past'
   views:
     pagination:
       first: First
