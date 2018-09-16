@@ -9,6 +9,11 @@ class Event < ApplicationRecord
   scope :of_event_type_id, ->(param) { where(event_type_id: param) }
   scope :past, -> { where('datetime < ?', Time.zone.now) }
 
+  delegate :past?,
+           :future?,
+           to: :datetime,
+           allow_nil: true
+
   def participants_count
     users_joined.count + friends_count
   end
@@ -19,13 +24,5 @@ class Event < ApplicationRecord
 
   def permalink
     "#{ENV['DOMAIN_NAME']}/events/#{id}"
-  end
-
-  def past?
-    datetime < Time.zone.now
-  end
-
-  def future?
-    !past?
   end
 end

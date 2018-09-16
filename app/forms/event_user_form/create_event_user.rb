@@ -23,8 +23,8 @@ module EventUserForm
     end
 
     def event_datetime_in_future
-      return true if event.datetime.future?
-      errors.add(:friends_count, I18n.t('errors.event_type.datetime_past'))
+      return true if event.future?
+      errors.add(:base, I18n.t('errors.event_type.datetime_past'))
     end
 
     def event
