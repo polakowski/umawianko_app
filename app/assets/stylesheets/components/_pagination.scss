@@ -1,0 +1,39 @@
+.pagination {
+  margin-top: $size-xxl;
+  text-align: center;
+
+  .prev, .next {
+    display: none;
+  }
+
+  .page a, .first a, .last a, .page.current {
+    background: transparent;
+    border-radius: $font-size-xxxxl / 2;
+    border: 1px solid $color-l-gray;
+    color: $color-gray;
+    display: inline-block;
+    font-size: $font-size-m;
+    line-height: $font-size-xxxxl;
+    min-width: $font-size-xxxxl;
+  }
+
+  .page:not(.current) a, .first a, .last a {
+    will-change: color, background;
+
+    &:hover, &:focus {
+      background: $color-l-gray;
+      color: white;
+    }
+  }
+
+  .page.current {
+    background: $color-primary;
+    border-color: $color-primary;
+    color: white;
+    font-weight: $font-weight-semibold;
+  }
+
+  .first a, .last a {
+    padding: 0 $size-xs;
+  }
+}
