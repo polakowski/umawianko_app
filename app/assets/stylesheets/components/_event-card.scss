@@ -70,7 +70,8 @@ $card-header-height: 40px;
     margin-bottom: $size-xxxxs;
   }
 
-  &:last-of-type &__circle:before {
+  &:last-of-type:not(.event-card--cta) &__circle:before,
+  &--cta:last-child &__circle:before {
     content: none;
   }
 

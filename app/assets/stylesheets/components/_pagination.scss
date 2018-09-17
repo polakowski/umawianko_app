@@ -19,6 +19,8 @@
 
   .page:not(.current) a, .first a, .last a {
     will-change: color, background;
+    transition: color $link-anim-duration ease,
+                background $link-anim-duration ease;
 
     &:hover, &:focus {
       background: $color-l-gray;
