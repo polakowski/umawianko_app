@@ -42,6 +42,7 @@ module EventForm
         assign_notification_data(msg)
         assign_notification_fields(msg)
         assign_notification_footer(msg)
+        assign_notification_action(msg)
       end
     end
 
@@ -62,6 +63,17 @@ module EventForm
     def assign_notification_footer(msg)
       msg.footer = resource.creator.name
       msg.footer_icon = resource.creator.image
+    end
+
+    def assign_notification_action(msg)
+      msg.callback_id = 'join_event'
+      msg.actions << {
+        name: 'events.join_solo',
+        text: 'Sign me up',
+        type: 'button',
+        style: 'primary',
+        value: resource.id
+      }
     end
   end
 end

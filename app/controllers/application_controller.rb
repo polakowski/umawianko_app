@@ -5,21 +5,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
-  rescue_from Umawianko::UserNotSignedIn do
-    redirect_to sign_in_path
-  end
-
-  rescue_from Umawianko::OAuthError do
-    redirect_to sign_in_path
-  end
-
   def authenticate_user!
     return if user_signed_in?
     raise Umawianko::UserNotSignedIn
   end
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
+    @current_user ||= User.find_by(uid: session[:user_uid])
   end
 
   def user_signed_in?

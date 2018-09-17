@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy', as: :sign_out
   get '/auth/failure' => 'sessions#failure'
 
+  post 'slack_action', to: 'slack_actions#handle'
+
   resources :events, only: %i[index new create show edit update] do
     resources :event_users, only: %i[new create edit update]
   end
