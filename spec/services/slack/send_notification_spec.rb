@@ -28,7 +28,8 @@ describe Slack::SendNotification do
           title: 'Lorem ipsum',
           text: 'Dolor sit amet',
           fields: include(title: 'Foo', value: 'Bar', short: true),
-          footer: 'Footer content'
+          footer: 'Footer content',
+          actions: []
         )
       )
     end

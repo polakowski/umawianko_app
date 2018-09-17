@@ -1,6 +1,5 @@
 class ApplicationClient
   DEFAULT_CONTENT_TYPES = {
-    post: 'application/json; charset=utf-8',
     get: 'application/x-www-form-urlencoded, charset=utf-8'
   }.freeze
 
@@ -9,16 +8,6 @@ class ApplicationClient
   end
 
   private
-
-  def post(url, body:, headers: nil)
-    response = HTTParty.post(
-      build_full_url(url),
-      body: body.to_json,
-      headers: build_headers(headers, :post)
-    )
-
-    handle_response(response)
-  end
 
   def get(url, params: nil, headers: nil)
     response = HTTParty.get(

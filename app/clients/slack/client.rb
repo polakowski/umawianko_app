@@ -9,6 +9,13 @@ module Slack
       handle_response(response, 'user')
     end
 
+    def send_dialog_open_request(trigger_id, dialog = {})
+      body     = { token: access_token, trigger_id: trigger_id, dialog: dialog.to_json }
+      response = get('/api/dialog.open', params: body)
+
+      handle_response(response)
+    end
+
     private
 
     def access_token

@@ -93,3 +93,14 @@ Style/AndOr:
 Lint/UnusedMethodArgument:
   Exclude:
     - 'app/validators/*_validator.rb'
+
+Style/ClassVars:
+  Enabled: false
+
+Style/MethodMissingSuper:
+  Exclude:
+    - 'app/wrappers/application_wrapper.rb'
+
+Style/MissingRespondToMissing:
+  Exclude:
+    - 'app/wrappers/application_wrapper.rb'

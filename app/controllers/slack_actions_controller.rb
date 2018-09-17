@@ -1,5 +1,8 @@
 class SlackActionsController < ActionController::Base
-  rescue_from Umawianko::InvalidSlackInteraction do |error|
+  INTERACTION = 'interactive_message'.freeze
+  DIALOG_RESULT = 'dialog_submission'.freeze
+
+  rescue_from Umawianko::InvalidSlackInteraction do
     respond_to_user('Something went wrong.')
   end
 
@@ -9,9 +12,10 @@ class SlackActionsController < ActionController::Base
 
   def handle
     Slack::HandleInteraction.call(
-      interaction,
+      interactive_action_object,
       slack_user_id,
-      callback_webhook
+      callback_webhook,
+      trigger_id
     )
   end
 
@@ -37,6 +41,21 @@ class SlackActionsController < ActionController::Base
     @interaction ||= OpenStruct.new(interaction_params)
   end
 
+  def dialog_submission
+    @dialog_submission ||= OpenStruct.new(
+      name: payload['callback_id'],
+      value: OpenStruct.new(payload['submission'].merge('state' => payload['state']))
+    )
+  end
+
+  def submission_value
+    payload['submission'].merge('state' => payload['state'])
+  end
+
+  def request_type
+    payload.dig('type')
+  end
+
   def interaction_params
     payload.dig('actions', 0)
   end
@@ -47,5 +66,18 @@ class SlackActionsController < ActionController::Base
 
   def callback_webhook
     payload.dig('response_url')
+  end
+
+  def trigger_id
+    payload.dig('trigger_id')
+  end
+
+  def interactive_action_object
+    case request_type
+    when INTERACTION
+      interaction
+    when DIALOG_RESULT
+      dialog_submission
+    end
   end
 end

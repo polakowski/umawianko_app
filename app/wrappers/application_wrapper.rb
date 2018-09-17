@@ -13,7 +13,7 @@ class ApplicationWrapper
   end
 
   def self.instance
-    @@instance ||= self.new
+    @@instance ||= new
   end
 
   private

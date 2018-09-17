@@ -67,13 +67,22 @@ module EventForm
 
     def assign_notification_action(msg)
       msg.callback_id = 'join_event'
-      msg.actions << {
-        name: 'events.join_solo',
-        text: 'Sign me up',
-        type: 'button',
-        style: 'primary',
-        value: resource.id
-      }
+      msg.actions = [
+        {
+          name: 'events.join_solo',
+          text: 'Sign me up',
+          type: 'button',
+          style: 'primary',
+          value: resource.id
+        },
+        {
+          name: 'events.join_with_friends',
+          text: 'Sign me up (with friends)',
+          type: 'button',
+          style: 'default',
+          value: resource.id
+        }
+      ]
     end
   end
 end
