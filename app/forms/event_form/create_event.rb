@@ -65,6 +65,7 @@ module EventForm
       msg.footer_icon = resource.creator.image
     end
 
+    # rubocop:disable Metrics/MethodLength
     def assign_notification_action(msg)
       msg.callback_id = 'join_event'
       msg.actions = [
@@ -84,5 +85,6 @@ module EventForm
         }
       ]
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

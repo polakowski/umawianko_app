@@ -44,6 +44,7 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
   config.include ActiveSupport::Testing::TimeHelpers
   config.include Shoulda::Matchers::ActiveModel, type: :form
+  config.include StubEnv::Helpers
   Warden.test_mode!
 
   # RSpec Rails can automatically mix in different behaviours to your tests

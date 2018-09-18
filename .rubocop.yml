@@ -43,6 +43,8 @@ Metrics/MethodLength:
   Exclude:
     - 'db/migrate/**/*'
     - 'db/seeds/**/*'
+    - 'app/services/slack/interactive_message/**/*'
+    - 'app/services/slack/dialog_submission/**/*'
 
 Metrics/ModuleLength:
   Exclude:
@@ -104,3 +106,6 @@ Style/MethodMissingSuper:
 Style/MissingRespondToMissing:
   Exclude:
     - 'app/wrappers/application_wrapper.rb'
+
+Style/StructInheritance:
+  Enabled: false

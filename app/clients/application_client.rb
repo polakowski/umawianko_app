@@ -1,8 +1,4 @@
 class ApplicationClient
-  DEFAULT_CONTENT_TYPES = {
-    get: 'application/x-www-form-urlencoded, charset=utf-8'
-  }.freeze
-
   def self.base_url(url)
     @@base_url = url
   end
@@ -20,7 +16,7 @@ class ApplicationClient
   end
 
   def build_headers(headers, action)
-    default_headers(action).dup.tap do |defaults|
+    default_headers(action).tap do |defaults|
       defaults.merge!(headers) if headers
     end
   end
@@ -39,8 +35,18 @@ class ApplicationClient
   end
 
   def default_headers(action)
-    {
-      'Content-Type' => DEFAULT_CONTENT_TYPES.fetch(action)
-    }
+    { 'Content-Type' => content_type_for(action) }
+  end
+
+  def default_content_types
+    {}
+  end
+
+  def default_content_type
+    'application/json, charset=utf-8'
+  end
+
+  def content_type_for(action)
+    default_content_types.fetch(action) { default_content_type }
   end
 end

@@ -21,5 +21,11 @@ module Slack
     def access_token
       ENV.fetch('SLACK_APP_ACCESS_TOKEN')
     end
+
+    def default_content_types
+      {
+        get: 'application/x-www-form-urlencoded, charset=utf-8'
+      }
+    end
   end
 end

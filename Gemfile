@@ -52,6 +52,8 @@ end
 group :test do
   gem 'rack_session_access', '~> 0'
   gem 'shoulda-matchers', '~> 3.1.2'
+  gem 'webmock', '~> 3.4.1'
+  gem 'stub_env', '~> 1.0.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
