@@ -1,11 +1,8 @@
 describe Slack::InteractiveMessage::Events::JoinWithFriends do
   describe '.call' do
     it 'calls open_dialog wrapper method' do
-      event   = create(:upcoming_event, name: 'Oh My God This Name Is So Long')
-      wrapper = double('Slack::Wrapper')
-
-      allow(wrapper).to receive(:open_dialog)
-      stub_const('Slack::Wrapper', wrapper)
+      event = create(:upcoming_event, name: 'Oh My God This Name Is So Long')
+      allow(Slack::Wrapper).to receive(:open_dialog)
 
       payload = {
         response_url: 'https://example.com/webhook',
@@ -20,7 +17,7 @@ describe Slack::InteractiveMessage::Events::JoinWithFriends do
 
       Slack::InteractiveMessage::Events::JoinWithFriends.call(payload)
 
-      expect(wrapper).to have_received(:open_dialog).once.with(
+      expect(Slack::Wrapper).to have_received(:open_dialog).once.with(
         'abc-123',
         include(
           callback_id: 'events.submit_join_dialog',

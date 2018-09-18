@@ -109,3 +109,7 @@ Style/MissingRespondToMissing:
 
 Style/StructInheritance:
   Enabled: false
+
+Style/EmptyMethod:
+  Exclude:
+    - 'spec/**/*_spec.rb'

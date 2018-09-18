@@ -7,16 +7,13 @@ describe Slack::DialogSubmission::Events::SubmitJoinDialog do
           user       = create(:user, email: 'user@example.com')
           event_user = create(:event_user, event: event, user: user, friends_count: 5)
           join_event = double('Events::JoinEvent')
-          wrapper    = double('Slack::Wrapper')
 
           allow(join_event).to receive(:result).and_return(event_user)
           allow(Events::JoinEvent).to receive(:call).and_return(join_event)
           allow(Slack::SendResponse).to receive(:call)
-          allow(wrapper).to(
+          allow(Slack::Wrapper).to(
             receive(:user_id_to_email).with('A1').and_return('user@example.com')
           )
-
-          stub_const('Slack::Wrapper', wrapper)
 
           payload = {
             response_url: 'https://example.com/webhook',
@@ -40,17 +37,15 @@ describe Slack::DialogSubmission::Events::SubmitJoinDialog do
           event_user = create(:event_user, event: event, user: user, friends_count: 2)
           message    = double('ActiveSupport::OrderedOptions')
           join_event = double('Events::JoinEvent')
-          wrapper    = double('Slack::Wrapper')
 
           allow(message).to receive(:attachments=)
           allow(join_event).to receive(:result).and_return(event_user)
           allow(Events::JoinEvent).to receive(:call).and_return(join_event)
           allow(Slack::SendResponse).to receive(:call).and_yield(message)
-          allow(wrapper).to(
+          allow(Slack::Wrapper).to(
             receive(:user_id_to_email).with('A1').and_return('user@example.com')
           )
 
-          stub_const('Slack::Wrapper', wrapper)
           stub_env('DOMAIN_NAME', 'http://foo.eu')
 
           payload = {
@@ -91,18 +86,15 @@ describe Slack::DialogSubmission::Events::SubmitJoinDialog do
           user       = create(:user, email: 'user@example.com')
           message    = double('ActiveSupport::OrderedOptions')
           event_user = create(:event_user, event: event, user: user)
-          wrapper    = double('Slack::Wrapper')
           join_event = double('Events::JoinEvent')
 
           allow(message).to receive(:attachments=)
           allow(join_event).to receive(:result).and_return(event_user)
-          allow(Events::JoinEvent).to receive(:call).and_return(join_event)
           allow(Slack::SendResponse).to receive(:call).and_yield(message)
-          allow(wrapper).to(
+          allow(Events::JoinEvent).to receive(:call).and_return(join_event)
+          allow(Slack::Wrapper).to(
             receive(:user_id_to_email).with('B8').and_return('user@example.com')
           )
-
-          stub_const('Slack::Wrapper', wrapper)
 
           payload = {
             response_url: 'https://example.com/webhook',
@@ -124,14 +116,11 @@ describe Slack::DialogSubmission::Events::SubmitJoinDialog do
 
     context 'when no user account connected' do
       it 'raises error' do
-        event   = create(:upcoming_event)
-        wrapper = double('Slack::Wrapper')
+        event = create(:upcoming_event)
 
-        allow(wrapper).to(
+        allow(Slack::Wrapper).to(
           receive(:user_id_to_email).with('DLG123').and_return('gregory@home.com')
         )
-
-        stub_const('Slack::Wrapper', wrapper)
 
         payload = {
           response_url: 'https://example.com/webhook',

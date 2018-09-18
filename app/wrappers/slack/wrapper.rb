@@ -2,6 +2,9 @@ module Slack
   class Wrapper < ApplicationWrapper
     client_class Slack::Client
 
+    forward :user_id_to_email,
+            :open_dialog
+
     def user_id_to_email(user_id)
       user = client.get_user_info(user_id)
       user.dig('profile', 'email') if user.present?

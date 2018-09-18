@@ -1,19 +1,20 @@
 class ApplicationWrapper
-  def self.client_class(client)
-    @@client_class = client
-  end
-
   def initialize
     @client = @@client_class.new
   end
 
-  def self.method_missing(method, *args)
-    return instance.public_send(method, *args) if instance.respond_to?(method)
-    raise Umawianko::NotImplementedError, "#{instance.class} does not implement #{method}"
-  end
+  class << self
+    def client_class(klass_name)
+      @@client_class = klass_name
+    end
 
-  def self.instance
-    @@instance ||= new
+    def forward(*methods)
+      methods.each do |method|
+        class_eval <<-CODE, __FILE__, __LINE__ + 1
+          def self.#{method}(*args); new.#{method}(*args); end
+        CODE
+      end
+    end
   end
 
   private

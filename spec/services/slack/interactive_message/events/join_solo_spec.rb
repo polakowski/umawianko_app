@@ -2,16 +2,13 @@ describe Slack::InteractiveMessage::Events::JoinSolo do
   describe '.call' do
     context 'with user account connected' do
       it 'calls join_event service' do
-        user    = create(:user, email: 'john@doe.com')
-        event   = create(:upcoming_event, name: 'The Event')
-        wrapper = double('Slack::Wrapper')
+        user  = create(:user, email: 'john@doe.com')
+        event = create(:upcoming_event, name: 'The Event')
 
         allow(Events::JoinEvent).to receive(:call)
-        allow(wrapper).to(
+        allow(Slack::Wrapper).to(
           receive(:user_id_to_email).with('ABC123').and_return('john@doe.com')
         )
-
-        stub_const('Slack::Wrapper', wrapper)
 
         payload = {
           response_url: 'https://example.com/webhook',
@@ -36,17 +33,15 @@ describe Slack::InteractiveMessage::Events::JoinSolo do
 
         event   = create(:upcoming_event, name: 'The Event')
         message = double('ActiveSupport::OrderedOptions')
-        wrapper = double('Slack::Wrapper')
 
         allow(message).to receive(:attachments=)
-        allow(wrapper).to(
+        allow(Slack::Wrapper).to(
           receive(:user_id_to_email).with('ABC123').and_return('john@doe.com')
         )
         allow(Slack::SendResponse).to(
           receive(:call).with('https://example.com/webhook').and_yield(message)
         )
 
-        stub_const('Slack::Wrapper', wrapper)
         stub_env('DOMAIN_NAME', 'http://foo.bar')
 
         payload = {
@@ -85,15 +80,11 @@ describe Slack::InteractiveMessage::Events::JoinSolo do
     context 'when no user account connected' do
       it 'raises error' do
         create(:user, email: 'elon@space.com')
+        event = create(:upcoming_event)
 
-        event   = create(:upcoming_event)
-        wrapper = double('Slack::Wrapper')
-
-        allow(wrapper).to(
+        allow(Slack::Wrapper).to(
           receive(:user_id_to_email).with('OCISLY').and_return('jeff@blue.com')
         )
-
-        stub_const('Slack::Wrapper', wrapper)
 
         payload = {
           response_url: 'https://example.com/webhook',
