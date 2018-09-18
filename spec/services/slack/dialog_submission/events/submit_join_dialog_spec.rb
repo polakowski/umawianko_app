@@ -96,6 +96,8 @@ describe Slack::DialogSubmission::Events::SubmitJoinDialog do
             receive(:user_id_to_email).with('B8').and_return('user@example.com')
           )
 
+          stub_env('DOMAIN_NAME', 'http://localhost.com')
+
           payload = {
             response_url: 'https://example.com/webhook',
             user: {
