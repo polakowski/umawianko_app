@@ -9,19 +9,19 @@ module Slack
         end
 
         def perform_action
-          ::Events::JoinEvent.call(event, user, interaction.value[:friends_count])
+          @event_user = ::Events::JoinEvent.call(
+            event, user, interaction.value[:friends_count]
+          ).result
         end
 
         def send_response
-          event_user = EventUser.find_by(event: event, user: user)
+          # event_user = EventUser.find_by(event: event, user: user)
 
           Slack::SendResponse.call(callback_webhook) do |msg|
-            msg.replace_original = false
-            msg.response_type = 'ephemeral'
             msg.attachments = [
               {
                 title: "You have signed up for <#{event.permalink}|#{event.name}>. "\
-                  "You will bring #{pluralize(event_user.friends_count, 'friend')}.",
+                  "You will bring #{pluralize(@event_user.friends_count, 'friend')}.",
                 callback_id: 'event_joined',
                 actions: [{
                   name: 'messages.delete',
@@ -36,7 +36,7 @@ module Slack
 
         private
 
-        attr_reader :event
+        attr_reader :event, :event_user
       end
     end
   end

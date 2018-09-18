@@ -35,7 +35,7 @@ module Slack
     end
 
     def find_user
-      User.find_by(email: user_email)
+      User.find_by!(email: user_email)
     rescue ActiveRecord::RecordNotFound
       raise Umawianko::SlackInteractionUserNotFound, "User not found: #{user_email}"
     end

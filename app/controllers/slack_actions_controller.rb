@@ -1,5 +1,5 @@
 class SlackActionsController < ActionController::Base
-  rescue_from Umawianko::InvalidSlackInteraction do |error|
+  rescue_from Umawianko::InvalidSlackInteraction do
     respond_to_user('Something went wrong.')
   end
 
@@ -9,6 +9,7 @@ class SlackActionsController < ActionController::Base
 
   def handle
     Slack::HandleInteractionPayload.call(payload)
+    head :no_content
   end
 
   private

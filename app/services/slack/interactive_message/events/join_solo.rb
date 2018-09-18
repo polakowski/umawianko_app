@@ -12,8 +12,6 @@ module Slack
 
         def send_response
           Slack::SendResponse.call(callback_webhook) do |msg|
-            msg.replace_original = false
-            msg.response_type = 'ephemeral'
             msg.attachments = [
               {
                 title: "You have signed up for <#{event.permalink}|#{event.name}>.",

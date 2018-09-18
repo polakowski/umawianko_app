@@ -8,13 +8,11 @@ module Slack
     end
 
     def call
-      validate_payload!
       endpoint_handler_class.call(payload)
     end
 
     private
 
-    include Slack::InteractionPayloadValidation
     attr_reader :payload
 
     def payload_type
@@ -48,7 +46,7 @@ module Slack
       name = "slack/#{payload_type}/#{payload_group}/#{short_action_name}".camelize
       name.constantize
     rescue NameError
-      raise Umawianko::InvalidSlackInteraction, 'Invalid endpoint handler class: ' + name
+      raise Umawianko::InvalidSlackInteraction, "Invalid endpoint handler class #{name}"
     end
   end
 end
