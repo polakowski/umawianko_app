@@ -1,3 +1,5 @@
+$pagination-bubble-size: 32px;
+
 .pagination {
   margin-top: $size-xxl;
   text-align: center;
@@ -6,18 +8,18 @@
     display: none;
   }
 
-  .page a, .first a, .last a, .page.current {
+  .page a, .first a, .last a, .page.active {
     background: transparent;
-    border-radius: $font-size-xxxxl / 2;
+    border-radius: $pagination-bubble-size / 2;
     border: 1px solid $color-l-gray;
     color: $color-gray;
     display: inline-block;
     font-size: $font-size-m;
-    line-height: $font-size-xxxxl;
-    min-width: $font-size-xxxxl;
+    line-height: $pagination-bubble-size;
+    min-width: $pagination-bubble-size;
   }
 
-  .page:not(.current) a, .first a, .last a {
+  .page:not(.active) a, .first a, .last a {
     will-change: color, background;
     transition: color $link-anim-duration ease,
                 background $link-anim-duration ease;
@@ -28,7 +30,7 @@
     }
   }
 
-  .page.current {
+  .page.active {
     background: $color-primary;
     border-color: $color-primary;
     color: white;
