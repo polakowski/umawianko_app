@@ -31,7 +31,7 @@ describe Events::JoinEvent do
           }.to not_change {
             EventUser.count
           }.and change {
-            EventUser.find(event_user.id).friends_count
+            event_user.reload.friends_count
           }.from(1).to(4)
         end
       end
