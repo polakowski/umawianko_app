@@ -2,12 +2,12 @@ describe 'wrapper' do
   describe 'forwarding class methods to instance' do
     context 'calling forwarded method' do
       it 'calls instance method' do
-        define_const 'DummyClient' do
+        stub_class 'DummyClient' do
           def request(*)
           end
         end
 
-        define_const 'DummyWrapper', parent: ApplicationWrapper do
+        stub_class 'DummyWrapper', parent: ApplicationWrapper do
           client_class DummyClient
 
           forward :the_method
@@ -30,17 +30,20 @@ describe 'wrapper' do
 
     context 'calling not-forwarded method' do
       it 'raises error' do
-        define_const 'DummyClient' do
+        stub_class 'DummyClient' do
           def request(*)
           end
         end
 
-        define_const 'DummyWrapper', parent: ApplicationWrapper do
+        stub_class 'DummyWrapper', parent: ApplicationWrapper do
           client_class DummyClient
 
           forward :the_method
 
           def the_method(*)
+          end
+
+          def not_a_good_method
           end
         end
 
@@ -56,13 +59,5 @@ describe 'wrapper' do
         )
       end
     end
-  end
-end
-
-def define_const(name, parent: nil, &block)
-  if parent.nil?
-    stub_const(name, Class.new(&block))
-  else
-    stub_const(name, Class.new(parent, &block))
   end
 end
