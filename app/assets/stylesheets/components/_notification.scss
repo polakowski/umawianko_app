@@ -21,6 +21,11 @@ $notification-icon-size: 28px;
     margin-right: $size-l;
   }
 
+  &--in-form {
+    display: block;
+    margin-bottom: $size-l;
+  }
+
   &--success {
     border-color: $color-success;
     color: $color-success;
@@ -38,6 +43,18 @@ $notification-icon-size: 28px;
     &:before {
       @extend .umi--place;
       border-color: $color-dd-gray;
+    }
+  }
+
+  &--error {
+    border-color: $color-error;
+    color: $color-error;
+
+    &:before {
+      content: '!';
+      font-size: $font-size-xl;
+      font-weight: $font-weight-semibold;
+      font-family: $font-family-base;
     }
   }
 }

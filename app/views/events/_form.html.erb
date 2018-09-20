@@ -7,6 +7,7 @@
 
 
   <%= simple_form_for @event, html: { autocomplete: 'off' } do |f| %>
+    <%= f.error :base, class: 'notification notification--in-form notification--error' %>
     <%= f.input :name %>
     <%= f.input :place %>
 

@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     resources :event_users, only: %i[new create edit update]
   end
 
+  resources :past_events, only: %i[index]
+
   root to: 'home#index'
 end
