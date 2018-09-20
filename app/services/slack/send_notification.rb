@@ -10,12 +10,12 @@ module Slack
         msg.fallback = 'Notification.'
         msg.color = color
         msg.fields = [] # title, value, short
+        msg.actions = []
       end
 
       yield(message) if block_given?
 
-      notifier = Slack::Notifier.new(webhook)
-      notifier.post(attachments: [message])
+      Slack::Notifier.new(webhook).post(attachments: [message])
     end
   end
 end

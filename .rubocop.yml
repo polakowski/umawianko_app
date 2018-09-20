@@ -43,6 +43,8 @@ Metrics/MethodLength:
   Exclude:
     - 'db/migrate/**/*'
     - 'db/seeds/**/*'
+    - 'app/services/slack/interactive_message/**/*'
+    - 'app/services/slack/dialog_submission/**/*'
 
 Metrics/ModuleLength:
   Exclude:
@@ -93,3 +95,21 @@ Style/AndOr:
 Lint/UnusedMethodArgument:
   Exclude:
     - 'app/validators/*_validator.rb'
+
+Style/ClassVars:
+  Enabled: false
+
+Style/MethodMissingSuper:
+  Exclude:
+    - 'app/wrappers/application_wrapper.rb'
+
+Style/MissingRespondToMissing:
+  Exclude:
+    - 'app/wrappers/application_wrapper.rb'
+
+Style/StructInheritance:
+  Enabled: false
+
+Style/EmptyMethod:
+  Exclude:
+    - 'spec/**/*_spec.rb'
