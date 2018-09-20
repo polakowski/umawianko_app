@@ -23,6 +23,7 @@ gem 'jquery-rails', '~> 4.3.0'
 gem 'rails-patterns', '~> 0'
 gem 'slack-notifier', '2.3.1'
 gem 'pagy', '~> 0.19.1'
+gem 'httparty', '~> 0.16.2'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
@@ -33,7 +34,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'dotenv-rails', '2.2.1'
   gem 'pry-rails', '~> 0.3.5'
   gem 'rspec-rails', '~> 3.7.0'
   gem 'factory_bot_rails'
@@ -46,11 +46,14 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'dotenv-rails', '2.2.1'
 end
 
 group :test do
   gem 'rack_session_access', '~> 0'
   gem 'shoulda-matchers', '~> 3.1.2'
+  gem 'webmock', '~> 3.4.1'
+  gem 'stub_env', '~> 1.0.4'
 end
 
 group :production do

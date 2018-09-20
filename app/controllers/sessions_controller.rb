@@ -1,5 +1,5 @@
-class SessionsController < ApplicationController
-  SESSION_KEY = :user_id
+class SessionsController < StaticController
+  SESSION_KEY = :user_uid
 
   before_action :authenticate_user!, except: %i[new create]
 
@@ -39,8 +39,11 @@ class SessionsController < ApplicationController
   def update_and_sign_in(user)
     user.update(image: auth['info']['image']) if user.image.blank?
     reset_session
-    session[SESSION_KEY] = user.id
-    cookies.signed[SESSION_KEY] = user.id
+
+    user.uid.tap do |value|
+      session[SESSION_KEY] = value
+      cookies.signed[SESSION_KEY] = value
+    end
   end
 
   def valid_email?

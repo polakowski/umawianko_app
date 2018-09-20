@@ -1,4 +1,4 @@
-class EventsController < AuthenticatedController
+class EventsController < StaticAuthenticatedController
   def index
     @events = filter_by_event_type(events_scope)
   end
@@ -56,6 +56,6 @@ class EventsController < AuthenticatedController
   end
 
   def events_scope
-    Event.upcoming.newest_first
+    Event.upcoming.newest_first.includes(:event_type)
   end
 end

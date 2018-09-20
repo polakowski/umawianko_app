@@ -1,4 +1,4 @@
-class EventUsersController < AuthenticatedController
+class EventUsersController < StaticAuthenticatedController
   def new
     find_event
     @resource = EventUser.new
