@@ -26,7 +26,7 @@ function datetimepicker(selector) {
   $(function() {
     $(selector).datetimepicker({
       sideBySide: true,
-      format: 'YYYY-MM-D HH:mm',
+      format: 'YYYY-MM-D HH:mm Z',
       stepping: 15,
       icons: {
         up: 'umi umi--chevron-up',

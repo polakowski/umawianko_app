@@ -13,7 +13,7 @@ describe Event do
     end
 
     context 'when at least one user joined the event' do
-      it 'can be destroyed' do
+      it 'cannot be destroyed' do
         event = create(:event)
         create(:event_user, event: event)
 

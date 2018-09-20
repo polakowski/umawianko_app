@@ -3,7 +3,7 @@
     <h1 class='m-m--b deco-header'><span>Event details</span></h1>
     <div class='event-page__data m-xs--b'>
       <label></label>
-      <div class='event-heading'>
+      <div class='event-fieldvalue event-heading'>
         <span class='event-heading__name'><%= @event.name %></span>
         <%= link_to(
           @event.event_type.name,
@@ -15,13 +15,13 @@
     </div>
     <div class='event-page__data m-m--b'>
       <label>Where?</label>
-      <span class='event-place'><%= @event.place %></span>
+      <span class='event-fieldvalue event-place'><%= @event.place %></span>
     </div>
     <div class='event-page__data m-m--b'>
       <label>When?</label>
-      <span class='event-datetime'>
-        <%= format_event_date_and_time(@event) %>
-      </span>
+      <div class='event-fieldvalue event-datetime'>
+        <%== format_event_datetime_with_distance(@event) %>
+      </div>
     </div>
     <% if @event.description.present? %>
       <div class='event-page__data event-page__data--condensed m-m--b'>
@@ -31,7 +31,7 @@
     <% end %>
     <div class='event-page__data m-m--b'>
       <label>People</label>
-      <div class='event-people'>
+      <div class='event-fieldvalue event-people'>
         <span class='total'><%= @event.participants_count %></span>
         <span><%= format_event_people_hint(@event) %></span>
       </div>
@@ -45,19 +45,21 @@
       <%= render partial: 'events/participant', locals: { event_user: event_user } %>
     <%- end %>
 
-    <div class='event-page__cta-wrapper'>
-      <% if @event_user.nil? %>
-        <%= link_to 'Sign me up!', new_event_event_user_path(@event),
-          class: 'btn btn--primary btn--large' %>
-      <% else %>
-        <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
-          class: 'btn btn--primary btn--large' %>
-      <% end %>
+    <% if @event.future? %>
+      <div class='event-page__cta-wrapper'>
+        <% if @event_user.nil? %>
+          <%= link_to 'Sign me up!', new_event_event_user_path(@event),
+            class: 'btn btn--primary btn--large' %>
+        <% else %>
+          <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
+            class: 'btn btn--primary btn--large' %>
+        <% end %>
 
-      <% if @event.creator == current_user %>
-        <%= link_to 'Edit event',
-          edit_event_path(@event), class: 'btn btn--secondary btn--large m-m--t' %>
-      <% end %>
-    </div>
+        <% if @event.creator == current_user %>
+          <%= link_to 'Edit event',
+            edit_event_path(@event), class: 'btn btn--secondary btn--large m-m--t' %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
