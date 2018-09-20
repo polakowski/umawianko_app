@@ -24,4 +24,13 @@
       color: $color-llll-gray;
     }
   }
+
+  &--guest {
+    background: $color-page-bg;
+    border-bottom: 1px solid $color-l-gray;
+
+    .brand {
+      color: $color-ddd-gray;
+    }
+  }
 }

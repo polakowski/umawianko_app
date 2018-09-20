@@ -1,0 +1,19 @@
+.big-message {
+  margin-top: $size-xxxl;
+
+  .header {
+    font-size: $font-size-xxxl;
+    border-bottom: 1px solid $color-ll-gray;
+    line-height: 1.5;
+    margin-bottom: $size-s;
+    font-weight: $font-weight-semibold;
+  }
+
+  .text {
+    font-size: $font-size-l;
+  }
+
+  &__actions {
+    margin-top: $size-xl;
+  }
+}

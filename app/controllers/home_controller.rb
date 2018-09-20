@@ -1,5 +1,7 @@
 class HomeController < StaticController
+  layout 'guest'
+
   def index
-    redirect_to '/events'
+    return redirect_to '/events' if user_signed_in?
   end
 end

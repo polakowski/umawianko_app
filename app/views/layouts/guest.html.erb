@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Umawianko</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href='https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,900' rel='stylesheet'>
+  </head>
+
+  <body>
+    <%= render 'layouts/guest-header' %>
+    <div class='outer-content-wrapper bg-tint p-xxxl--b'>
+      <%= yield %>
+    </div>
+  </body>
+</html>
