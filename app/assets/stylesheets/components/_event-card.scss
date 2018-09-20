@@ -70,48 +70,55 @@ $card-header-height: 40px;
     margin-bottom: $size-xxxxs;
   }
 
-  &:last-child &__circle:before {
+  &:last-of-type:not(.event-card--cta) &__circle:before,
+  &--cta:last-child &__circle:before {
     content: none;
   }
-}
 
-.event-card--cta {
-  margin-left: 7 * $size-m;
-  display: inline-flex;
+  &--cta {
+    margin-left: 7 * $size-m;
+    display: inline-flex;
 
-  .event-card__title {
-    will-change: color;
-    transition: color $link-anim-duration ease;
-  }
-
-  .event-card__circle__inner {
-    font-size: $font-size-xxl;
-    will-change: color, border-color;
-    transition: color $link-anim-duration ease, border-color $link-anim-duration ease;
-  }
-
-  &:hover {
     .event-card__title {
-      color: $color-secondary;
+      will-change: color;
+      transition: color $link-anim-duration ease;
     }
 
     .event-card__circle__inner {
-      border-color: $color-secondary;
-      color: $color-secondary;
+      font-size: $font-size-xxl;
+      will-change: color, border-color;
+      transition: color $link-anim-duration ease, border-color $link-anim-duration ease;
+    }
+
+    &:hover {
+      .event-card__title {
+        color: $color-secondary;
+      }
+
+      .event-card__circle__inner {
+        border-color: $color-secondary;
+        color: $color-secondary;
+      }
+    }
+
+    .event-card__title {
+      color: $color-cancel;
+    }
+
+    .event-card__circle {
+      background: none;
+
+      &__inner {
+        border: 2px solid $color-cancel;
+        color: $color-cancel;
+        line-height: $card-header-height - 4px;
+      }
     }
   }
 
-  .event-card__title {
-    color: $color-cancel;
-  }
-
-  .event-card__circle {
-    background: none;
-
-    &__inner {
-      border: 2px solid $color-cancel;
-      color: $color-cancel;
-      line-height: $card-header-height - 4px;
+  &--past {
+    .event-card__title {
+      font-size: $font-size-l;
     }
   }
 }

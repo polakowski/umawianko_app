@@ -1,0 +1,7 @@
+<div class='fluid-content-wrapper p-m--t'>
+  <h1 class='m-m--b header--l deco-header'><span>Past Events</span></h1>
+  <%- @events.map do |event| %>
+    <%= render partial: 'event/card_past', locals: { event: event } %>
+  <% end %>
+  <%== pagy_nav @pagy %>
+</div>

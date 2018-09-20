@@ -16,3 +16,19 @@ h3 {
   font-size: $font-size-xxl;
   font-weight: $font-weight-semibold;
 }
+
+.text-muted {
+  color: $color-cancel;
+}
+
+.text-success {
+  color: $color-success;
+}
+
+.text-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.text-bold {
+  font-weight: $font-weight-bold;
+}

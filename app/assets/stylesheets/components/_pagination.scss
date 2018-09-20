@@ -1,0 +1,43 @@
+$pagination-bubble-size: 32px;
+
+.pagination {
+  margin-top: $size-xxl;
+  text-align: center;
+
+  .prev, .next {
+    display: none;
+  }
+
+  .page a, .first a, .last a, .page.active {
+    background: transparent;
+    border-radius: $pagination-bubble-size / 2;
+    border: 1px solid $color-l-gray;
+    color: $color-gray;
+    display: inline-block;
+    font-size: $font-size-m;
+    line-height: $pagination-bubble-size;
+    min-width: $pagination-bubble-size;
+  }
+
+  .page:not(.active) a, .first a, .last a {
+    will-change: color, background;
+    transition: color $link-anim-duration ease,
+                background $link-anim-duration ease;
+
+    &:hover, &:focus {
+      background: $color-l-gray;
+      color: white;
+    }
+  }
+
+  .page.active {
+    background: $color-primary;
+    border-color: $color-primary;
+    color: white;
+    font-weight: $font-weight-semibold;
+  }
+
+  .first a, .last a {
+    padding: 0 $size-xs;
+  }
+}

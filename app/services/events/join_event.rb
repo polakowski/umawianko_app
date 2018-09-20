@@ -7,6 +7,7 @@ module Events
     end
 
     def call
+      raise(Umawianko::RuntimeError, 'cannot join past event') if @event.past?
       create_or_update_event_user
     end
 

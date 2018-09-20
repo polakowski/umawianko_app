@@ -1,6 +1,6 @@
 class EventsController < AuthenticatedController
   def index
-    @events = filter_by_event_type(Event.upcoming)
+    @events = filter_by_event_type(events_scope)
   end
 
   def new
@@ -53,5 +53,9 @@ class EventsController < AuthenticatedController
   def filter_by_event_type(scope)
     return scope if params[:event_type_id].blank?
     scope.of_event_type_id(params[:event_type_id])
+  end
+
+  def events_scope
+    Event.upcoming.newest_first
   end
 end

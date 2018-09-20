@@ -15,4 +15,8 @@
   &--primary {
     @include link-main($color-primary);
   }
+
+  &--cancel {
+    @include link-main($color-cancel);
+  }
 }

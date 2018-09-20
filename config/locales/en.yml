@@ -35,3 +35,10 @@ en:
       datetime_in_past: "can't be in the past"
     event_type:
       color_invalid: 'is not a valid HEX color'
+      datetime_past: 'This event took place in the past. You cannot update any information connected with the event.' # full sentence for :base error
+  views:
+    pagination:
+      first: First
+      last: Last
+      previous: Prev
+      next: Next
