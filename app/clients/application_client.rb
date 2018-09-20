@@ -5,48 +5,35 @@ class ApplicationClient
 
   private
 
-  def get(url, params: nil, headers: nil)
+  def get(url, content_type:, root_key: nil, params: nil, headers: {})
     response = HTTParty.get(
       build_full_url(url),
       query: params,
-      headers: build_headers(headers, :get)
+      headers: headers.merge(
+        'Content-Type' => content_type
+      )
     )
 
-    handle_response(response)
+    handle_response(response, root_key)
   end
 
-  def build_headers(headers, action)
-    default_headers(action).tap do |defaults|
-      defaults.merge!(headers) if headers
-    end
+  def base_url
+    @@base_url
   end
 
   def build_full_url(url)
-    "#{@@base_url}#{url}"
+    "#{base_url}#{url}"
+  end
+
+  def parse_response(response)
+    JSON.parse(response.body).deep_symbolize_keys
   end
 
   def handle_response(response, root_key = nil)
     parsed_response = parse_response(response)
-    root_key ? parsed_response[root_key] : parsed_response
-  end
 
-  def parse_response(response)
-    response.as_json
-  end
+    return parsed_response[root_key.intern] if root_key.present? && response.ok?
 
-  def default_headers(action)
-    { 'Content-Type' => content_type_for(action) }
-  end
-
-  def default_content_types
-    {}
-  end
-
-  def default_content_type
-    'application/json, charset=utf-8'
-  end
-
-  def content_type_for(action)
-    default_content_types.fetch(action) { default_content_type }
+    parsed_response
   end
 end

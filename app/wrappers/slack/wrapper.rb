@@ -7,7 +7,7 @@ module Slack
 
     def user_id_to_email(user_id)
       user = client.get_user_info(user_id)
-      user.dig('profile', 'email') if user.present?
+      user.dig(:profile, :email) if user.present?
     end
 
     def open_dialog(trigger_id, dialog = {})

@@ -2,7 +2,7 @@ describe Slack::Wrapper do
   describe '.user_id_to_email' do
     it 'returns user email' do
       client    = instance_double('Slack::Client')
-      user_data = { 'profile' => { 'email' => 'jane@doe.com' } }
+      user_data = { profile: { email: 'jane@doe.com' } }
 
       allow(Slack::Client).to receive(:new).and_return(client)
       allow(client).to receive(:get_user_info).with('123ABC').and_return(user_data)
