@@ -51,8 +51,13 @@ class EventsController < StaticAuthenticatedController
   end
 
   def filter_by_event_type(scope)
-    return scope if params[:event_type_id].blank?
-    scope.of_event_type_id(params[:event_type_id])
+    return scope if event_type_id.blank?
+    @event_type = EventType.find(event_type_id)
+    scope.of_event_type_id(event_type_id)
+  end
+
+  def event_type_id
+    @event_type_id ||= params[:event_type_id]
   end
 
   def events_scope
