@@ -3,7 +3,7 @@ module Events
     def initialize(event, user, friends_count = 0)
       @event = event
       @user = user
-      @friends_count = friends_count
+      @friends_count = friends_count.to_i
     end
 
     def call

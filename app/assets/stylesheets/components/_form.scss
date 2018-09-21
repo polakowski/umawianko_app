@@ -1,7 +1,7 @@
 $labels-gutter-width: 10 * $size-m;
 
 .simple_form {
-  .input.string, .input.text, .input.boolean, .input.select {
+  .input {
     display: flex;
 
     label {
@@ -147,5 +147,27 @@ $labels-gutter-width: 10 * $size-m;
   &__actions {
     margin-top: $size-m;
     margin-left: $labels-gutter-width + $size-m;
+  }
+}
+
+@include screen-xs {
+  .simple_form {
+    .input {
+      flex-direction: column;
+
+      label {
+        flex: 0;
+        margin-bottom: $size-xxxs;
+        padding-top: 0;
+        text-align: left;
+      }
+    }
+
+    &__actions {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin-left: 0;
+    }
   }
 }

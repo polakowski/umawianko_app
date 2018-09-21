@@ -1,45 +1,70 @@
 <div class='fluid-content-wrapper p-m--t'>
   <div class='event-page'>
-    <h1 class='m-m--b deco-header'><span>Event details</span></h1>
-    <div class='event-page__data m-xs--b'>
-      <label></label>
-      <div class='event-fieldvalue event-heading'>
-        <span class='event-heading__name'><%= @event.name %></span>
-        <%= link_to(
-          @event.event_type.name,
-          events_path(event_type_id: @event.event_type_id),
-          class: 'm-m--l event-heading__badge',
-          style: "background: #{event_type_bg_color(@event)}"
-        ) %>
-      </div>
-    </div>
+    <h1 class='m-m--b deco-header'>
+      <%= @event.name %>
+      <% if @event.future? && @event.creator == current_user%>
+        <%= link_to 'Edit event',
+          edit_event_path(@event), class: 'deco-header__link link link--secondary s-hide' %>
+      <% end %>
+    </h1>
     <div class='event-page__data m-m--b'>
-      <label>Where?</label>
-      <span class='event-fieldvalue event-place'><%= @event.place %></span>
-    </div>
-    <div class='event-page__data m-m--b'>
-      <label>When?</label>
-      <div class='event-fieldvalue event-datetime'>
+      <label class='s-hide'>When?</label>
+      <div class='event-fieldvalue event-info'>
         <%== format_event_datetime_with_distance(@event) %>
       </div>
     </div>
+    <div class='event-page__data m-m--b'>
+      <label class='s-hide'>Where?</label>
+      <span class='event-fieldvalue event-info'>
+        <span class='s-show'>Place: </span>
+        <%= @event.place %>
+      </span>
+    </div>
+    <div class='event-page__data m-m--b'>
+      <label class='s-hide'>What?</label>
+      <span class='s-show text-semibold m-xxs--r'>Tag:</span>
+      <%= link_to(
+        @event.event_type.name,
+        events_path(event_type_id: @event.event_type_id),
+        class: 'event-info event-fieldvalue event-badge',
+        style: "color: #{event_type_bg_color(@event)}"
+      ) %>
+    </div>
     <% if @event.description.present? %>
       <div class='event-page__data event-page__data--condensed m-m--b'>
-        <label>Details</label>
-        <span class='event-description'><%= @event.description %></span>
+        <label class='s-hide'>Details?</label>
+        <span class='event-fieldvalue event-info--alt'><%= @event.description %></span>
       </div>
     <% end %>
     <div class='event-page__data m-m--b'>
-      <label>People</label>
+      <label class='s-hide'>How many people?</label>
       <div class='event-fieldvalue event-people'>
+        <span class='s-show m-xxxs--r'>People:</span>
         <span class='total'><%= @event.participants_count %></span>
         <span><%= format_event_people_hint(@event) %></span>
       </div>
     </div>
+    <% if @event.future? %>
+      <div class='event-page__cta-wrapper'>
+        <% if @event.creator == current_user %>
+          <%= link_to 'Edit event',
+            edit_event_path(@event), class: 'btn btn--secondary m-xs--b btn--large s-show' %>
+        <% end %>
+      </div>
+    <% end %>
 
-    <h2 class='m-m--b m-l--t deco-header header--m'><span>
+    <h3 class='m-m--b m-m--t deco-header'>
       Participants (<%= pluralize(@event.users_joined.count, 'user') %>)
-    </span></h2>
+      <% if @event.future? %>
+        <% if @event_user.nil? %>
+          <%= link_to 'Sign me up', new_event_event_user_path(@event),
+            class: 'deco-header__link link link--primary s-hide' %>
+        <% else %>
+          <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
+            class: 'deco-header__link link link--primary s-hide' %>
+        <% end %>
+      <% end %>
+    </h3>
 
     <%- @event.event_users.includes(:user).map do |event_user| %>
       <%= render partial: 'events/participant', locals: { event_user: event_user } %>
@@ -49,15 +74,10 @@
       <div class='event-page__cta-wrapper'>
         <% if @event_user.nil? %>
           <%= link_to 'Sign me up!', new_event_event_user_path(@event),
-            class: 'btn btn--primary btn--large' %>
+            class: 'btn btn--primary s-show btn--large' %>
         <% else %>
           <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
-            class: 'btn btn--primary btn--large' %>
-        <% end %>
-
-        <% if @event.creator == current_user %>
-          <%= link_to 'Edit event',
-            edit_event_path(@event), class: 'btn btn--secondary btn--large m-m--t' %>
+            class: 'btn btn--primary s-show btn--large' %>
         <% end %>
       </div>
     <% end %>

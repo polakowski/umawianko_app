@@ -122,3 +122,19 @@
     text-align: center;
   }
 }
+
+@include screen-xs {
+  .bootstrap-datetimepicker-widget {
+    & > .row {
+      flex-direction: column;
+    }
+
+    .datepicker {
+      width: 100%;
+    }
+
+    .timepicker {
+      margin-top: $size-m;
+    }
+  }
+}

@@ -3,7 +3,6 @@
   flex-direction: column;
 
   &__data {
-    float: left;
     display: flex;
     width: 100%;
     align-items: baseline;
@@ -17,47 +16,28 @@
       font-size: $font-size-s;
       color: $color-gray;
       font-weight: $font-weight-semibold;
-      width: 6 * $size-m;
       text-align: right;
       text-transform: uppercase;
-      flex-shrink: 0;
+      padding-right: $size-xxs;
+      width: 200px;
     }
 
     .event-fieldvalue {
-      margin-left: $size-m;
+      padding-left: $size-xxs;
     }
 
     .event-heading {
       display: flex;
       align-items: center;
-
-      &__name {
-        font-size: $font-size-xxxl;
-        font-weight: $font-weight-semibold;
-        line-height: $card-header-height;
-      }
-
-      &__badge {
-        padding: $size-xxxxs $size-s;
-        border-radius: 6px;
-        color: white;
-        font-size: $font-size-m;
-        font-weight: $font-weight-semibold;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
     }
 
-    .event-place {
-      font-size: $font-size-xl;
+    .event-info {
       font-weight: $font-weight-semibold;
+    }
+
+    .event-info--alt {
+      font-weight: $font-weight-regular;
       color: $color-dd-gray;
-    }
-
-    .event-datetime {
-      font-weight: $font-weight-semibold;
     }
 
     .event-people {
@@ -65,8 +45,8 @@
       color: $color-gray;
 
       .total {
-        line-height: 1.5em;
-        width: 1.5em;
+        line-height: 1.75em;
+        width: 1.75em;
         border-radius: 50%;
         background: $color-secondary;
         color: white;
@@ -85,11 +65,20 @@
     }
   }
 
+  .event-badge {
+    display: block;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   &__cta-wrapper {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: $size-xl;
   }
 
   .event-participant {
@@ -124,6 +113,25 @@
       .subtext {
         font-weight: $font-weight-semibold;
         color: $color-gray;
+      }
+    }
+  }
+}
+
+@include screen-s {
+  .event-page {
+    .event-participant__name {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .event-heading {
+      // ...
+    }
+
+    &__data {
+      .event-fieldvalue {
+        padding-left: 0;
       }
     }
   }

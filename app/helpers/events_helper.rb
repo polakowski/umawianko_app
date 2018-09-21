@@ -7,7 +7,7 @@ module EventsHelper
   end
 
   def format_event_date(event)
-    event.datetime.strftime('%A, %F')
+    event.datetime.strftime('%a, %F')
   end
 
   def format_event_time(event)
@@ -27,7 +27,7 @@ module EventsHelper
       css_class += ' text-muted'
     else
       prefix = 'in '
-      css_class += ' text-success'
+      css_class += ' text-secondary'
     end
 
     <<-STRING.squish

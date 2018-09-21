@@ -1,21 +1,19 @@
 .deco-header {
-  text-align: center;
-  position: relative;
-  color: $color-ddd-gray;
+  border-bottom: 1px solid $color-ll-gray;
+  line-height: 1.5;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 
-  &:before {
-    content: '';
-    height: 2px;
-    background: $color-ll-gray;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    left: 0;
+  &.centered {
+    text-align: center;
   }
 
-  span {
-    background: $color-page-bg;
-    padding: 0 $size-m;
-    position: relative;
+  &.primary {
+    color: $color-primary;
+  }
+
+  &__link {
+    font-size: $font-size-l;
   }
 }

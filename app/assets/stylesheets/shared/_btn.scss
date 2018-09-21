@@ -31,8 +31,7 @@
 
   &--large {
     font-size: $font-size-xl;
-    padding-left: 2 * $size-xxxl;
-    padding-right: 2 * $size-xxxl;
+    min-width: 300px;
   }
 
   &--primary {

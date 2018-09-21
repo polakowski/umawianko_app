@@ -76,7 +76,6 @@ $card-header-height: 40px;
   }
 
   &--cta {
-    margin-left: 7 * $size-m;
     display: inline-flex;
 
     .event-card__title {
@@ -114,6 +113,10 @@ $card-header-height: 40px;
         line-height: $card-header-height - 4px;
       }
     }
+  }
+
+  &--cta__gutter {
+    width: 7 * $size-m;
   }
 
   &--past {

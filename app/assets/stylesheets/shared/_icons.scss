@@ -53,4 +53,12 @@
   &--event-checkmark:before {
     content: "\e909"
   }
+
+  &--menu:before {
+    content: "\e90a";
+  }
+
+  &--close:before {
+    content: "\e90b";
+  }
 }
