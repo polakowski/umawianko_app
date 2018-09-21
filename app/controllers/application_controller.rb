@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    return User.first
     @current_user ||= User.find_by(uid: session[:user_uid])
   end
 
