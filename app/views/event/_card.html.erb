@@ -1,6 +1,6 @@
 <div class='event-card'>
   <div class='event-card__tagging m-m--r'>
-    <div class='event-card__date m-m--r'>
+    <div class='event-card__date xs-hide m-m--r'>
       <%= format_short_event_date(event) %>
     </div>
     <div class='event-card__circle' style="background: <%= event_type_bg_color(event) %>">
@@ -11,6 +11,12 @@
   <div class='event-card__content'>
     <%= link_to event.name, event, class: 'event-card__title link--primary inverted' %>
     <%= render partial: 'shared/data_pair', locals: { icon: 'place', value: event.place } %>
+    <div class='xs-show'>
+      <%= render partial: 'shared/data_pair', locals: {
+        icon: 'event-checkmark',
+        value: format_short_event_date(event)
+      } %>
+    </div>
     <p class='event-card__description'>
       <%= event.description %>
     </p>

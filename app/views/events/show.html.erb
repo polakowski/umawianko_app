@@ -2,36 +2,40 @@
   <div class='event-page'>
     <h1 class='m-m--b deco-header'><span>Event details</span></h1>
     <div class='event-page__data m-xs--b'>
-      <label></label>
+      <label class='s-hide'></label>
       <div class='event-fieldvalue event-heading'>
         <span class='event-heading__name'><%= @event.name %></span>
         <%= link_to(
           @event.event_type.name,
           events_path(event_type_id: @event.event_type_id),
-          class: 'm-m--l event-heading__badge',
+          class: 'event-heading__badge',
           style: "background: #{event_type_bg_color(@event)}"
         ) %>
       </div>
     </div>
     <div class='event-page__data m-m--b'>
-      <label>Where?</label>
-      <span class='event-fieldvalue event-place'><%= @event.place %></span>
+      <label class='s-hide'>Where?</label>
+      <span class='event-fieldvalue event-place'>
+        <span class='s-show'>Place: </span>
+        <%= @event.place %>
+      </span>
     </div>
     <div class='event-page__data m-m--b'>
-      <label>When?</label>
+      <label class='s-hide'>When?</label>
       <div class='event-fieldvalue event-datetime'>
         <%== format_event_datetime_with_distance(@event) %>
       </div>
     </div>
     <% if @event.description.present? %>
       <div class='event-page__data event-page__data--condensed m-m--b'>
-        <label>Details</label>
-        <span class='event-description'><%= @event.description %></span>
+        <label class='s-hide'>Details</label>
+        <span class='event-fieldvalue event-description'><%= @event.description %></span>
       </div>
     <% end %>
     <div class='event-page__data m-m--b'>
-      <label>People</label>
+      <label class='s-hide'>People</label>
       <div class='event-fieldvalue event-people'>
+        <span class='s-show m-xxxs--r'>People:</span>
         <span class='total'><%= @event.participants_count %></span>
         <span><%= format_event_people_hint(@event) %></span>
       </div>

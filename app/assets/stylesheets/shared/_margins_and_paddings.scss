@@ -63,3 +63,7 @@
 .m-xxs {
   @include margin-container($size-xxs);
 }
+
+.m-xxxs {
+  @include margin-container($size-xxxs);
+}
