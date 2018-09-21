@@ -16,6 +16,10 @@
     @include link-main($color-primary);
   }
 
+  &--secondary {
+    @include link-main($color-secondary);
+  }
+
   &--cancel {
     @include link-main($color-cancel);
   }

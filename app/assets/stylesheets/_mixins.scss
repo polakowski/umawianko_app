@@ -1,0 +1,23 @@
+@mixin screen-s() {
+  @media only screen and (max-width: $screen-s) {
+    @content;
+  }
+}
+
+@mixin screen-s-op() {
+  @media only screen and (min-width: $screen-s) {
+    @content;
+  }
+}
+
+@mixin screen-xs() {
+  @media only screen and (max-width: $screen-xs) {
+    @content;
+  }
+}
+
+@mixin screen-xs-op() {
+  @media only screen and (min-width: $screen-xs) {
+    @content;
+  }
+}

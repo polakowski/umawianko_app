@@ -1,3 +1,43 @@
 .push-right {
   margin-left: auto;
 }
+
+.xs-show {
+  @include screen-xs {
+    display: initial;
+  }
+
+  @include screen-xs-op {
+    display: none;
+  }
+}
+
+.xs-hide {
+  @include screen-xs-op {
+    display: initial;
+  }
+
+  @include screen-xs {
+    display: none;
+  }
+}
+
+.s-show {
+  @include screen-s {
+    display: initial;
+  }
+
+  @include screen-s-op {
+    display: none;
+  }
+}
+
+.s-hide {
+  @include screen-s-op {
+    display: initial;
+  }
+
+  @include screen-s {
+    display: none;
+  }
+}

@@ -31,35 +31,84 @@
 }
 
 // PADDINGS
-.p-m {
-  @include padding-container($size-m);
+.p-xxxxs {
+  @include padding-container($size-xxxxs);
 }
 
-.p-xxxl {
-  @include padding-container($size-xxxl);
+.p-xxxs {
+  @include padding-container($size-xxxs);
+}
+
+.p-xxs {
+  @include padding-container($size-xxs);
+}
+
+.p-xs {
+  @include padding-container($size-xs);
 }
 
 .p-s {
   @include padding-container($size-s);
 }
 
+.p-m {
+  @include padding-container($size-m);
+}
+
+.p-l {
+  @include padding-container($size-l);
+}
+
+.p-xl {
+  @include padding-container($size-xl);
+}
+
+.p-xxl {
+  @include padding-container($size-xxl);
+}
+
+.p-xxxl {
+  @include padding-container($size-xxxl);
+}
+
+
 // MARGINS
-.m-l {
-  @include margin-container($size-l);
+.m-xxxxs {
+  @include margin-container($size-xxxxs);
 }
 
-.m-m {
-  @include margin-container($size-m);
+.m-xxxs {
+  @include margin-container($size-xxxs);
 }
 
-.m-s {
-  @include margin-container($size-s);
+.m-xxs {
+  @include margin-container($size-xxs);
 }
 
 .m-xs {
   @include margin-container($size-xs);
 }
 
-.m-xxs {
-  @include margin-container($size-xxs);
+.m-s {
+  @include margin-container($size-s);
+}
+
+.m-m {
+  @include margin-container($size-m);
+}
+
+.m-l {
+  @include margin-container($size-l);
+}
+
+.m-xl {
+  @include margin-container($size-xl);
+}
+
+.m-xxl {
+  @include margin-container($size-xxl);
+}
+
+.m-xxxl {
+  @include margin-container($size-xxxl);
 }

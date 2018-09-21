@@ -2,11 +2,35 @@
   <div class='fluid-content-wrapper'>
     <section class='global-header__main'>
       <a class='brand text-bold m-l--r' href='/'>Umawianko</a>
-      <a class='header-link m-m--r push-right' href='/'>Upcoming events</a>
-      <a class='header-link m-m--r' href='/past_events'>Past events</a>
-      <a class='header-link' href='/signout'>
-        <%= "Sign out (#{current_user.name})" %>
+      <nav id='nav' class='global-header__nav'>
+        <div class='global-header__nav__close-wrapper s-show'>
+          <a
+            id='mobile-menu-killer'
+            class='global-header__nav__close-wrapper__close umi umi--close'>
+          </a>
+        </div>
+        <a class='global-header__nav__link' href='/'>Upcoming events</a>
+        <a class='global-header__nav__link' href='/past_events'>Past events</a>
+        <a class='global-header__nav__link' href='/signout'>
+          <%= "Sign out (#{current_user.name})" %>
+        </a>
+      </nav>
+      <a
+        id='mobile-menu-trigger'
+        class='global-header__mobile-menu-trigger s-show umi umi--menu'>
       </a>
     </section>
   </div>
 </header>
+
+<script type='text/javascript'>
+  $(function() {
+    $('#mobile-menu-trigger').on('click', function() {
+      $('#nav').addClass('active');
+    });
+
+    $('#mobile-menu-killer').on('click', function() {
+      $('#nav').removeClass('active');
+    });
+  });
+</script>

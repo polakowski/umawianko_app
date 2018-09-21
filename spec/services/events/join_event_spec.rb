@@ -2,21 +2,42 @@ describe Events::JoinEvent do
   describe '.call' do
     context 'when event is upcoming' do
       context 'when user have not joined the event' do
-        it 'creates user_event' do
-          event = create(:upcoming_event)
-          user = create(:user)
+        context 'when friends_count is present' do
+          it 'creates user_event' do
+            event = create(:upcoming_event)
+            user = create(:user)
 
-          expect {
-            Events::JoinEvent.call(event, user, 7)
-          }.to change {
-            EventUser.count
-          }.by(1)
+            expect {
+              Events::JoinEvent.call(event, user, 7)
+            }.to change {
+              EventUser.count
+            }.by(1)
 
-          expect(EventUser.last).to have_attributes(
-            user_id: user.id,
-            event_id: event.id,
-            friends_count: 7
-          )
+            expect(EventUser.last).to have_attributes(
+              user_id: user.id,
+              event_id: event.id,
+              friends_count: 7
+            )
+          end
+        end
+
+        context 'when friends_count is blank' do
+          it 'creates user_event' do
+            event = create(:upcoming_event)
+            user = create(:user)
+
+            expect {
+              Events::JoinEvent.call(event, user, '')
+            }.to change {
+              EventUser.count
+            }.by(1)
+
+            expect(EventUser.last).to have_attributes(
+              user_id: user.id,
+              event_id: event.id,
+              friends_count: 0
+            )
+          end
         end
       end
 

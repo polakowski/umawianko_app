@@ -3,7 +3,6 @@ module EventUserForm
     attribute :event_id, Integer
     attribute :friends_count, Integer
 
-    validates :friends_count, presence: true
     validate :event_datetime_in_future
     validate :friends_count_numericality
 
@@ -18,7 +17,7 @@ module EventUserForm
     end
 
     def friends_count_numericality
-      return true if (0..100).cover? friends_count
+      return true if friends_count.blank? || (0..100).cover?(friends_count)
       errors.add(:friends_count, 'is invalid')
     end
 
