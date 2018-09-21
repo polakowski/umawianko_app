@@ -7,7 +7,7 @@ module EventsHelper
   end
 
   def format_event_date(event)
-    event.datetime.strftime('%A, %F')
+    event.datetime.strftime('%a, %F')
   end
 
   def format_event_time(event)

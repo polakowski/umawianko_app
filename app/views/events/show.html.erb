@@ -1,49 +1,57 @@
 <div class='fluid-content-wrapper p-m--t'>
   <div class='event-page'>
-    <h1 class='m-m--b deco-header'><span>Event details</span></h1>
-    <div class='event-page__data m-xs--b'>
-      <label class='s-hide'></label>
-      <div class='event-fieldvalue event-heading'>
-        <span class='event-heading__name'><%= @event.name %></span>
-        <%= link_to(
-          @event.event_type.name,
-          events_path(event_type_id: @event.event_type_id),
-          class: 'event-heading__badge',
-          style: "background: #{event_type_bg_color(@event)}"
-        ) %>
-      </div>
-    </div>
+    <h1 class='m-m--b deco-header primary centered'>
+      <%= @event.name %>
+    </h1>
     <div class='event-page__data m-m--b'>
       <label class='s-hide'>Where?</label>
-      <span class='event-fieldvalue event-place'>
+      <span class='event-fieldvalue event-info'>
         <span class='s-show'>Place: </span>
         <%= @event.place %>
       </span>
     </div>
     <div class='event-page__data m-m--b'>
       <label class='s-hide'>When?</label>
-      <div class='event-fieldvalue event-datetime'>
+      <div class='event-fieldvalue event-info'>
         <%== format_event_datetime_with_distance(@event) %>
       </div>
     </div>
+    <div class='event-page__data m-m--b'>
+      <label class='s-hide'>What?</label>
+      <span class='s-show text-semibold m-xxs--r'>Tag:</span>
+      <%= link_to(
+        @event.event_type.name,
+        events_path(event_type_id: @event.event_type_id),
+        class: 'event-info event-fieldvalue event-badge',
+        style: "color: #{event_type_bg_color(@event)}"
+      ) %>
+    </div>
     <% if @event.description.present? %>
       <div class='event-page__data event-page__data--condensed m-m--b'>
-        <label class='s-hide'>Details</label>
-        <span class='event-fieldvalue event-description'><%= @event.description %></span>
+        <label class='s-hide'>Details?</label>
+        <span class='event-fieldvalue event-info--alt'><%= @event.description %></span>
       </div>
     <% end %>
     <div class='event-page__data m-m--b'>
-      <label class='s-hide'>People</label>
+      <label class='s-hide'>How many people?</label>
       <div class='event-fieldvalue event-people'>
         <span class='s-show m-xxxs--r'>People:</span>
         <span class='total'><%= @event.participants_count %></span>
         <span><%= format_event_people_hint(@event) %></span>
       </div>
     </div>
+    <% if @event.future? %>
+      <div class='event-page__cta-wrapper'>
+        <% if @event.creator == current_user %>
+          <%= link_to 'Edit event',
+            edit_event_path(@event), class: 'btn btn--secondary btn--large m-xxxs--t' %>
+        <% end %>
+      </div>
+    <% end %>
 
-    <h2 class='m-m--b m-l--t deco-header header--m'><span>
+    <h3 class='m-m--b m-l--t deco-header centered'><span>
       Participants (<%= pluralize(@event.users_joined.count, 'user') %>)
-    </span></h2>
+    </span></h3>
 
     <%- @event.event_users.includes(:user).map do |event_user| %>
       <%= render partial: 'events/participant', locals: { event_user: event_user } %>
@@ -57,11 +65,6 @@
         <% else %>
           <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
             class: 'btn btn--primary btn--large' %>
-        <% end %>
-
-        <% if @event.creator == current_user %>
-          <%= link_to 'Edit event',
-            edit_event_path(@event), class: 'btn btn--secondary btn--large m-m--t' %>
         <% end %>
       </div>
     <% end %>
