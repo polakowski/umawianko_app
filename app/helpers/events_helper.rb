@@ -27,7 +27,7 @@ module EventsHelper
       css_class += ' text-muted'
     else
       prefix = 'in '
-      css_class += ' text-success'
+      css_class += ' text-secondary'
     end
 
     <<-STRING.squish

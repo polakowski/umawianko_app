@@ -1,20 +1,24 @@
 <div class='fluid-content-wrapper p-m--t'>
   <div class='event-page'>
-    <h1 class='m-m--b deco-header primary centered'>
+    <h1 class='m-m--b deco-header'>
       <%= @event.name %>
+      <% if @event.future? && @event.creator == current_user%>
+        <%= link_to 'Edit event',
+          edit_event_path(@event), class: 'deco-header__link link link--secondary s-hide' %>
+      <% end %>
     </h1>
+    <div class='event-page__data m-m--b'>
+      <label class='s-hide'>When?</label>
+      <div class='event-fieldvalue event-info'>
+        <%== format_event_datetime_with_distance(@event) %>
+      </div>
+    </div>
     <div class='event-page__data m-m--b'>
       <label class='s-hide'>Where?</label>
       <span class='event-fieldvalue event-info'>
         <span class='s-show'>Place: </span>
         <%= @event.place %>
       </span>
-    </div>
-    <div class='event-page__data m-m--b'>
-      <label class='s-hide'>When?</label>
-      <div class='event-fieldvalue event-info'>
-        <%== format_event_datetime_with_distance(@event) %>
-      </div>
     </div>
     <div class='event-page__data m-m--b'>
       <label class='s-hide'>What?</label>
@@ -44,14 +48,23 @@
       <div class='event-page__cta-wrapper'>
         <% if @event.creator == current_user %>
           <%= link_to 'Edit event',
-            edit_event_path(@event), class: 'btn btn--secondary btn--large m-xxxs--t' %>
+            edit_event_path(@event), class: 'btn btn--secondary m-xs--b btn--large s-show' %>
         <% end %>
       </div>
     <% end %>
 
-    <h3 class='m-m--b m-l--t deco-header centered'><span>
+    <h3 class='m-m--b m-m--t deco-header'>
       Participants (<%= pluralize(@event.users_joined.count, 'user') %>)
-    </span></h3>
+      <% if @event.future? %>
+        <% if @event_user.nil? %>
+          <%= link_to 'Sign me up', new_event_event_user_path(@event),
+            class: 'deco-header__link link link--primary s-hide' %>
+        <% else %>
+          <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
+            class: 'deco-header__link link link--primary s-hide' %>
+        <% end %>
+      <% end %>
+    </h3>
 
     <%- @event.event_users.includes(:user).map do |event_user| %>
       <%= render partial: 'events/participant', locals: { event_user: event_user } %>
@@ -61,10 +74,10 @@
       <div class='event-page__cta-wrapper'>
         <% if @event_user.nil? %>
           <%= link_to 'Sign me up!', new_event_event_user_path(@event),
-            class: 'btn btn--primary btn--large' %>
+            class: 'btn btn--primary s-show btn--large' %>
         <% else %>
           <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
-            class: 'btn btn--primary btn--large' %>
+            class: 'btn btn--primary s-show btn--large' %>
         <% end %>
       </div>
     <% end %>
