@@ -64,6 +64,10 @@ $card-header-height: 40px;
       position: absolute;
       right: $card-header-height / 2;
     }
+
+    .umi--volleyball:before {
+      font-size: 1.25em;
+    }
   }
 
   .data-pair {
