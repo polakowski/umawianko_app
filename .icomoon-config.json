@@ -1,0 +1,6 @@
+{
+  "icons_set_name": "um-icons",
+  "icons_file_path": "app/assets/stylesheets/shared/_icons.scss",
+  "fonts_file_dir": "app/assets/fonts",
+  "css_class": "umi"
+}
