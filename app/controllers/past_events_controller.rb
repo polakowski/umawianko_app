@@ -8,6 +8,6 @@ class PastEventsController < EventsController
   private
 
   def events_scope
-    Event.past.newest_first
+    Event.past.newest_last
   end
 end
