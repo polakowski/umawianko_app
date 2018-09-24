@@ -25,4 +25,8 @@ class Event < ApplicationRecord
   def permalink
     "#{ENV.fetch('DOMAIN_NAME')}/events/#{id}"
   end
+
+  def datetime
+    super && super.in_time_zone
+  end
 end

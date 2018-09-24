@@ -15,25 +15,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require moment
+//= require moment-timezone-with-data
 //= require bootstrap-datetimepicker
 //= require_tree .
 
 moment.updateLocale('en', {
   week: { dow: 1 }
 });
-
-function datetimepicker(selector) {
-  $(function() {
-    $(selector).datetimepicker({
-      sideBySide: true,
-      format: 'YYYY-MM-D HH:mm Z',
-      stepping: 15,
-      icons: {
-        up: 'umi umi--chevron-up',
-        down: 'umi umi--chevron-down',
-        next: 'umi umi--chevron-right',
-        previous: 'umi umi--chevron-left'
-      }
-    });
-  });
-}
