@@ -20,22 +20,22 @@
         <%= @event.place %>
       </span>
     </div>
-    <div class='event-page__data m-m--b'>
-      <label class='s-hide'>What?</label>
-      <span class='s-show text-semibold m-xxs--r'>Tag:</span>
-      <%= link_to(
-        @event.event_type.name,
-        events_path(event_type_id: @event.event_type_id),
-        class: 'event-info event-fieldvalue event-badge',
-        style: "color: #{event_type_bg_color(@event)}"
-      ) %>
-    </div>
     <% if @event.description.present? %>
       <div class='event-page__data event-page__data--condensed m-m--b'>
         <label class='s-hide'>Details?</label>
         <span class='event-fieldvalue event-info--alt'><%= @event.description %></span>
       </div>
     <% end %>
+    <div class='event-page__data m-m--b'>
+      <label class='s-hide'>What?</label>
+      <span class='s-show text-semibold m-xxs--r'>Tag:</span>
+      <%= link_to(
+        @event.event_type.name,
+        events_path(event_type_id: @event.event_type_id),
+        class: 'event-info event-fieldvalue event-badge m-xs--l',
+        style: "background-color: #{event_type_bg_color(@event)}"
+      ) %>
+    </div>
     <div class='event-page__data m-m--b'>
       <label class='s-hide'>How many people?</label>
       <div class='event-fieldvalue event-people'>

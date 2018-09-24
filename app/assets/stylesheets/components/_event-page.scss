@@ -67,6 +67,10 @@
 
   .event-badge {
     display: block;
+    color: white;
+    line-height: 1.75em;
+    padding: 0 $size-s;
+    border-radius: calc(1.75em / 2.0);
 
     &:hover {
       text-decoration: underline;
@@ -132,6 +136,11 @@
     &__data {
       .event-fieldvalue {
         padding-left: 0;
+      }
+
+      .event-badge {
+        padding-left: $size-s;
+        margin-left: 0;
       }
     }
   }

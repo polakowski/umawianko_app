@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   belongs_to :event_type, inverse_of: :events
 
   scope :newest_first, -> { order(:datetime) }
+  scope :newest_last, -> { order(datetime: :desc) }
   scope :upcoming, -> { where('datetime > ?', Time.zone.now) }
   scope :of_event_type_id, ->(param) { where(event_type_id: param) }
   scope :past, -> { where('datetime < ?', Time.zone.now) }
