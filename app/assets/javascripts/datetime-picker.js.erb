@@ -2,7 +2,7 @@ function datetimepicker(selector) {
   $(function() {
     $(selector).datetimepicker({
       sideBySide: true,
-      format: "YYYY-MM-D HH:mm <%= Time.zone.formatted_offset %>",
+      format: "YYYY-MM-D HH:mm <%= Time.zone.now.formatted_offset(false) %>",
       stepping: 15,
       icons: {
         up: 'umi umi--chevron-up',
