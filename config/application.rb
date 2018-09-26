@@ -15,8 +15,8 @@ module UmawiankoApp
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.time_zone = 'Warsaw'
-    config.active_record.default_timezone = :local
+    config.time_zone = 'Europe/Warsaw'
+    config.active_record.default_timezone = :utc
     config.active_record.time_zone_aware_attributes = false
   end
 end
