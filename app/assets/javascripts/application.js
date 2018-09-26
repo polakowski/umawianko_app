@@ -17,6 +17,7 @@
 //= require moment
 //= require moment-timezone-with-data
 //= require bootstrap-datetimepicker
+//= require datetime-picker
 //= require_tree .
 
 moment.updateLocale('en', {
