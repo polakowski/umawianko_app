@@ -24,7 +24,7 @@ module EventsHelper
 
     if event.datetime.past?
       suffix = ' ago'
-      css_class += ' text-muted'
+      css_class += ' text-cancel'
     else
       prefix = 'in '
       css_class += ' text-secondary'
@@ -45,10 +45,11 @@ module EventsHelper
   end
 
   def event_type_bg_color(event)
+    return Event::UNTAGGED_COLOR if event.event_type.nil?
     event.event_type.color.presence || EventType::DEFAULT_COLOR
   end
 
   def event_circle_icon(event)
-    event.event_type.icon.presence || EventType::DEFAULT_ICON
+    event.event_type&.icon.presence || EventType::DEFAULT_ICON
   end
 end
