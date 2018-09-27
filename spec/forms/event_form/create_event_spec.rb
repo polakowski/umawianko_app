@@ -82,7 +82,5 @@ describe EventForm::CreateEvent, type: :form do
         end
       end
     end
-
-    it { is_expected.to validate_presence_of(:event_type_id) }
   end
 end

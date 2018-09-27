@@ -8,7 +8,10 @@ class SlackActionsController < ActionController::Base
   end
 
   def handle
-    Slack::HandleInteractionPayload.call(payload)
+    HandleSlackInteractionPayloadJob.perform_async(payload).tap do |job_id|
+      raise Umawianko::InvalidSlackInteraction if job_id.blank?
+    end
+
     head :no_content
   end
 
@@ -16,10 +19,6 @@ class SlackActionsController < ActionController::Base
 
   def payload
     JSON.parse(params.require(:payload))
-  end
-
-  def respond_with_object(object)
-    respond_to_user(object.text)
   end
 
   def respond_to_user(text)

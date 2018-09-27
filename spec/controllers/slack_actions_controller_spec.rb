@@ -1,7 +1,7 @@
 describe SlackActionsController, type: :controller do
   describe '#handle' do
     it 'calls the service and renders nothing' do
-      allow(Slack::HandleInteractionPayload).to receive(:call)
+      allow(HandleSlackInteractionPayloadJob).to receive(:perform_async) { double('job') }
       params = slack_interaction_params(
         type: 'dialog_submission',
         submission: {
@@ -15,7 +15,7 @@ describe SlackActionsController, type: :controller do
 
       expect(response).to be_no_content
       expect(response.body).to be_empty
-      expect(Slack::HandleInteractionPayload).to have_received(:call).once.with(
+      expect(HandleSlackInteractionPayloadJob).to have_received(:perform_async).once.with(
         include(
           'type' => 'dialog_submission',
           'submission' => include(
