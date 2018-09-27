@@ -17,8 +17,12 @@ h3 {
   font-weight: $font-weight-semibold;
 }
 
-.text-muted {
+.text-cancel {
   color: $color-cancel;
+}
+
+.text-muted {
+  color: $color-gray;
 }
 
 .text-success {

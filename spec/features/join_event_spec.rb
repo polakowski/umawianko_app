@@ -1,6 +1,6 @@
 describe 'join event', type: :feature do
   scenario 'assigns user to an event' do
-    event = create(:upcoming_event)
+    event = create(:upcoming_event, :with_type)
     current_user = create(:user)
     signed_in_as current_user
 

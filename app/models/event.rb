@@ -1,8 +1,10 @@
 class Event < ApplicationRecord
+  UNTAGGED_COLOR = '#bfbfbf'.freeze
+
   belongs_to :creator, class_name: 'User', inverse_of: :created_events
   has_many :event_users, dependent: :restrict_with_exception
   has_many :users_joined, through: :event_users, source: :user
-  belongs_to :event_type, inverse_of: :events
+  belongs_to :event_type, inverse_of: :events, optional: true
 
   scope :newest_first, -> { order(:datetime) }
   scope :newest_last, -> { order(datetime: :desc) }
