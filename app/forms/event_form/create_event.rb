@@ -8,7 +8,7 @@ module EventForm
     attribute :datetime, DateTime
     attribute :event_type_id, Integer
 
-    validates :datetime, :event_type_id, presence: true
+    validates :datetime, presence: true
     validates :datetime, future: true
 
     private
@@ -33,8 +33,11 @@ module EventForm
     end
 
     def send_notification
-      return true if resource.event_type.slack_webhook.blank?
+      return true if resource.event_type.nil? || resource.event_type.slack_webhook.blank?
+      send_slack_notification
+    end
 
+    def send_slack_notification
       Slack::SendNotification.call(
         resource.event_type.slack_webhook,
         resource.event_type.color_or_default
@@ -65,26 +68,30 @@ module EventForm
       msg.footer_icon = resource.creator.image
     end
 
-    # rubocop:disable Metrics/MethodLength
     def assign_notification_action(msg)
       msg.callback_id = 'join_event'
       msg.actions = [
-        {
+        slack_action(
           name: 'events.join_solo',
           text: 'Sign me up',
-          type: 'button',
-          style: 'primary',
-          value: resource.id
-        },
-        {
+          style: 'primary'
+        ),
+        slack_action(
           name: 'events.join_with_friends',
           text: 'Sign me up (with friends)',
-          type: 'button',
-          style: 'default',
-          value: resource.id
-        }
+          style: 'default'
+        )
       ]
     end
-    # rubocop:enable Metrics/MethodLength
+
+    def slack_action(name:, text:, style:)
+      {
+        name: name,
+        text: text,
+        type: 'button',
+        style: style,
+        value: resource.id
+      }
+    end
   end
 end

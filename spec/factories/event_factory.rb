@@ -4,7 +4,6 @@ FactoryBot.define do
     place { 'Salt Lake City, UT' }
     datetime { Time.current }
     creator { create(:user) }
-    event_type
 
     factory :upcoming_event do
       datetime { 3.months.from_now }
@@ -12,6 +11,10 @@ FactoryBot.define do
 
     factory :past_event do
       datetime { 2.weeks.ago }
+    end
+
+    trait :with_type do
+      event_type
     end
   end
 end

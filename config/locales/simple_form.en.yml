@@ -45,11 +45,13 @@ en:
         name: 'What?'
         place: 'Where?'
         datetime: 'When?'
-        event_type_id: 'Select...'
+        event_type_id: 'No type'
         description: 'Provide more information (optional)'
 
     hints:
       event:
         auto_join: 'Check if you want to participate'
+        event_type_id: "You won't be able to change this later"
       event_user:
         friends_count: 'How many friends will you bring?'
+        
