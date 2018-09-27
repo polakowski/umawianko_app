@@ -56,6 +56,6 @@ class SessionsController < StaticController
   end
 
   def allowed_domains
-    ENV.fetch('ALLOWED_DOMAINS').split(',')
+    ENV.fetch('OAUTH_ALLOWED_DOMAINS').split(',')
   end
 end
