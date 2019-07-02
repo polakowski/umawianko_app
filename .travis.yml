@@ -10,6 +10,7 @@ addons:
 env:
   - RAILS_ENV=test
 before_install:
+  - gem update --system
   - cp -f config/database.ci.yml config/database.yml
 before_script:
   - bundle clean --force
