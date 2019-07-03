@@ -26,7 +26,7 @@ Lint/AmbiguousBlockAssociation:
     - '**/*_spec.rb'
 
 Metrics/AbcSize:
-  Max: 17
+  Max: 20
 
 Metrics/BlockLength:
   Exclude:
