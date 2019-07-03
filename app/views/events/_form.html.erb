@@ -5,7 +5,6 @@
     <h1 class='m-m--b'>Create new event</h1>
   <% end %>
 
-
   <%= simple_form_for @event, html: { autocomplete: 'off' } do |f| %>
     <%= f.error :base, class: 'notification notification--in-form notification--error' %>
     <%= f.input :name %>

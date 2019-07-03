@@ -20,6 +20,10 @@
     @include link-main($color-secondary);
   }
 
+  &--success {
+    @include link-main($color-success);
+  }
+
   &--cancel {
     @include link-main($color-cancel);
   }

@@ -44,6 +44,20 @@ class EventsController < StaticAuthenticatedController
     end
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+
+    Events::DeleteEvent.call(@event)
+
+    if @event.deleted?
+      flash[:success] = 'Event deleted successfully.'
+      redirect_to events_path
+    else
+      flash[:alert] = @event.errors[:base] || 'Could not delete event.'
+      redirect_to @event
+    end
+  end
+
   private
 
   def event_params

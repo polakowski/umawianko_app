@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   post 'slack_action', to: 'slack_actions#handle'
 
-  resources :events, only: %i[index new create show edit update] do
+  resources :events, only: %i[index new create show edit update destroy] do
     resources :event_users, only: %i[new create edit update]
   end
 

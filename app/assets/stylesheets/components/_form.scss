@@ -168,6 +168,10 @@ $labels-gutter-width: 10 * $size-m;
       display: flex;
       flex-direction: column;
       margin-left: 0;
+
+      .btn {
+        margin-bottom: $size-xs;
+      }
     }
   }
 }
