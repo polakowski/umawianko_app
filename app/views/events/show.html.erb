@@ -84,15 +84,26 @@
           <%= link_to 'Sign me up', new_event_event_user_path(@event),
             class: 'deco-header__link link link--success s-hide' %>
         <% else %>
-          <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
-            class: 'deco-header__link link link--secondary s-hide' %>
+          <div class='deco-header__links'>
+            <%=
+              link_to(
+                'Sign me off',
+                [@event, @event_user],
+                method: :delete,
+                class: 'deco-header__link link link--primary s-hide m-xs--r',
+                data: { confirm: 'Do you really want to sign off?' }
+              )
+            %>
+            <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
+              class: 'deco-header__link link link--secondary s-hide' %>
+          </div>
         <% end %>
       <% end %>
     </h3>
 
-    <%- @event.event_users.includes(:user).map do |event_user| %>
+    <% @event_users.map do |event_user| %>
       <%= render partial: 'events/participant', locals: { event_user: event_user } %>
-    <%- end %>
+    <% end %>
 
     <% if @event.future? %>
       <div class='event-page__cta-wrapper'>

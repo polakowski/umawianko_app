@@ -37,6 +37,21 @@ class EventUsersController < StaticAuthenticatedController
     end
   end
 
+  def destroy
+    find_event
+    @event_user = EventUser.find(params[:id])
+
+    Events::LeaveEvent.call(@event_user)
+
+    if @event_user.deleted?
+      flash[:success] = 'Successfully signed off!'
+    else
+      flash[:error] = 'Could not sign off from event.'
+    end
+
+    redirect_to @event
+  end
+
   private
 
   def event_user_params
