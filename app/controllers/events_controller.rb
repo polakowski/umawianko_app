@@ -24,7 +24,8 @@ class EventsController < StaticAuthenticatedController
 
   def show
     @event = Event.find(params[:id])
-    @event_user = @event.event_users.find_by(user: current_user)
+    @event_users = @event.event_users.includes(:user)
+    @event_user = @event_users.find { |event_user| event_user.user == current_user }
   end
 
   def edit

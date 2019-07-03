@@ -16,7 +16,8 @@ module Events
     attr_reader :event, :user, :friends_count
 
     def create_or_update_event_user
-      EventUser.find_or_initialize_by(event: event, user: user).tap do |event_user|
+      EventUser.with_deleted.find_or_initialize_by(event: event, user: user).tap do |event_user|
+        event_user.restore if event_user.deleted?
         event_user.friends_count = friends_count
         event_user.save!
       end

@@ -42,6 +42,10 @@
     @include classic-button($color-secondary);
   }
 
+  &--success {
+    @include classic-button($color-success);
+  }
+
   &[disabled] {
     speak: none;
     color: $color-cancel;

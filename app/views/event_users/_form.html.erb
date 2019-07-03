@@ -8,7 +8,14 @@
   <%= simple_form_for [@event, @event_user] do |f| %>
     <%= f.error :base, class: 'notification notification--in-form notification--error' %>
     <%= f.input :friends_count do %>
-      <%= number_field_tag 'event_user[friends_count]', @event_user.friends_count, in: 0..100 %>
+      <%=
+        number_field_tag(
+          'event_user[friends_count]',
+          @event_user.friends_count,
+          in: 0..100,
+          autofocus: true
+        )
+      %>
     <% end %>
     <div class='simple_form__actions'>
       <%= f.submit event_user_submit_text(@event_user), class: 'btn btn--secondary btn--large' %>
