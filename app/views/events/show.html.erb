@@ -2,9 +2,20 @@
   <div class='event-page'>
     <h1 class='m-m--b deco-header'>
       <%= @event.name %>
-      <% if @event.future? && @event.creator == current_user%>
-        <%= link_to 'Edit event',
-          edit_event_path(@event), class: 'deco-header__link link link--secondary s-hide' %>
+      <% if @event.future? && @event.creator == current_user %>
+        <div class='deco-header__links'>
+          <%=
+            link_to(
+              'Delete event',
+              @event,
+              method: :delete,
+              class: 'deco-header__link link link--primary s-hide m-xs--r',
+              data: { confirm: 'Do you really want to delete this event?' }
+            )
+          %>
+          <%= link_to 'Edit event',
+            edit_event_path(@event), class: 'deco-header__link link link--secondary s-hide' %>
+        </div>
       <% end %>
     </h1>
     <div class='event-page__data m-m--b'>
@@ -51,6 +62,15 @@
     <% if @event.future? %>
       <div class='event-page__cta-wrapper'>
         <% if @event.creator == current_user %>
+          <%=
+            button_to(
+              'Delete event',
+              @event,
+              method: :delete,
+              class: 'btn btn--primary m-xs--b btn--large s-show',
+              data: { confirm: 'Do you really want to delete this event?' }
+            )
+          %>
           <%= link_to 'Edit event',
             edit_event_path(@event), class: 'btn btn--secondary m-xs--b btn--large s-show' %>
         <% end %>
@@ -62,10 +82,10 @@
       <% if @event.future? %>
         <% if @event_user.nil? %>
           <%= link_to 'Sign me up', new_event_event_user_path(@event),
-            class: 'deco-header__link link link--primary s-hide' %>
+            class: 'deco-header__link link link--success s-hide' %>
         <% else %>
           <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
-            class: 'deco-header__link link link--primary s-hide' %>
+            class: 'deco-header__link link link--secondary s-hide' %>
         <% end %>
       <% end %>
     </h3>

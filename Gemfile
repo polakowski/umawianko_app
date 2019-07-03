@@ -26,6 +26,7 @@ gem 'slack-notifier', '2.3.1'
 gem 'pagy', '~> 0.19.1'
 gem 'httparty', '~> 0.16.2'
 gem 'sidekiq', '~> 5.1.0'
+gem 'paranoia', '~> 2.2'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180906142349) do
+ActiveRecord::Schema.define(version: 20190702111858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20180906142349) do
     t.integer "friends_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_event_users_on_deleted_at"
   end
 
   create_table "events", force: :cascade do |t|
@@ -39,6 +41,8 @@ ActiveRecord::Schema.define(version: 20180906142349) do
     t.datetime "datetime"
     t.integer "creator_id"
     t.integer "event_type_id"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_events_on_deleted_at"
   end
 
   create_table "users", force: :cascade do |t|
