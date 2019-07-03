@@ -67,18 +67,23 @@
               'Delete event',
               @event,
               method: :delete,
-              class: 'btn btn--primary m-xs--b btn--large s-show',
+              class: 'btn btn--primary btn--large s-show m-xs--b',
               data: { confirm: 'Do you really want to delete this event?' }
             )
           %>
           <%= link_to 'Edit event',
-            edit_event_path(@event), class: 'btn btn--secondary m-xs--b btn--large s-show' %>
+            edit_event_path(@event), class: 'btn btn--secondary btn--large s-show' %>
         <% end %>
       </div>
     <% end %>
 
     <h3 class='m-m--b m-m--t deco-header'>
-      Participants (<%= pluralize(@event.users_joined.count, 'user') %>)
+      <% if @event_users.any? %>
+        Participants (<%= pluralize(@event.users_joined.count, 'user') %>)
+      <% else %>
+        No participants yet
+      <% end %>
+
       <% if @event.future? %>
         <% if @event_user.nil? %>
           <%= link_to 'Sign me up', new_event_event_user_path(@event),
@@ -109,10 +114,19 @@
       <div class='event-page__cta-wrapper'>
         <% if @event_user.nil? %>
           <%= link_to 'Sign me up!', new_event_event_user_path(@event),
-            class: 'btn btn--primary s-show btn--large' %>
+            class: 'btn btn--success s-show btn--large' %>
         <% else %>
+          <%=
+            link_to(
+              'Sign me off',
+              [@event, @event_user],
+              method: :delete,
+              class: 'btn btn--primary s-show btn--large m-xs--b',
+              data: { confirm: 'Do you really want to sign off?' }
+            )
+          %>
           <%= link_to 'Edit my application', edit_event_event_user_path(@event, @event_user),
-            class: 'btn btn--primary s-show btn--large' %>
+            class: 'btn btn--secondary s-show btn--large' %>
         <% end %>
       </div>
     <% end %>
