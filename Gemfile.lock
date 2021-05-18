@@ -189,7 +189,8 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (3.1.1)
-    puma (3.12.1)
+    puma (4.3.8)
+      nio4r (~> 2.0)
     rack (2.0.7)
     rack-protection (2.0.5)
       rack
@@ -386,7 +387,7 @@ DEPENDENCIES
   paranoia (~> 2.2)
   pg (~> 1)
   pry-rails (~> 0.3.5)
-  puma (~> 3.7)
+  puma (~> 4.3)
   rack_session_access (~> 0)
   rails (~> 5.1.6)
   rails-patterns (~> 0)
